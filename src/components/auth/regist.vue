@@ -2,11 +2,11 @@
   <div id="regist">
     <img src="../../assets/auth/login.png" id="registimg" />
     <div id="registform">
-      <Form ref="formValidata" :model="formValidata" :rules="ruleValidata" :label-width="80">
+      <Form ref="formvalidate" :model="formvalidate" :rules="rulevalidate" :label-width="80">
         <FormItem label="用户名" prop="name">
           <Input
             type="text"
-            v-model="formValidata.name"
+            v-model="formvalidate.name"
             placeholder="昵称"
             clearable
             autocomplete="on"
@@ -15,25 +15,25 @@
         <FormItem label="密码" prop="pass">
           <Input
             type="password"
-            v-model="formValidata.pass"
+            v-model="formvalidate.pass"
             placeholder="密码"
             clearable
-            @keyup.enter.native="handleSubmit('formValidata')"
+            @keyup.enter.native="handleSubmit('formvalidate')"
           ></Input>
         </FormItem>
         <FormItem label="确认密码" prop="repass">
           <Input
             type="password"
-            v-model="formValidata.repass"
+            v-model="formvalidate.repass"
             placeholder="重新输入密码"
             clearable
-            @keyup.enter.native="handleSubmit('formValidata')"
+            @keyup.enter.native="handleSubmit('formvalidate')"
           ></Input>
         </FormItem>
         <FormItem>
           <Button
             type="primary"
-            @click="handleSubmit('formValidata')"
+            @click="handleSubmit('formvalidate')"
             ghost
             style="margin-right:10px"
           >注册</Button>
@@ -47,22 +47,21 @@
 <script>
 export default {
   data() {
-    const validataRepass = (rule, value, callback) => {
-        
-      if (value !== formValidata.pass) {
-
+    const validateRepass = (rule, value, callback) => {
+      if (value !== this.formvalidate.pass) {
+        console.log(value);
         callback(new Error("两次密码输入不一致"));
       } else {
         callback();
       }
     };
     return {
-      formValidata: {
+      formvalidate: {
         name: "",
         pass: "",
         repass: ""
       },
-      ruleValidata: {
+      rulevalidate: {
         name: [
           {
             required: true,
@@ -84,7 +83,7 @@ export default {
             trigger: "blur"
           },
           {
-            validator: validataRepass,
+            validator: validateRepass,
             trigger: "blur"
           }
         ]
@@ -93,7 +92,7 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validata(valid => {
+      this.$refs[name].validate(valid => {
         if (valid) {
           this.$Message.success("发送！");
           this.axios

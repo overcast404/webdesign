@@ -2,11 +2,11 @@
   <div id="login">
     <img src="../../assets/auth/login.png" id="loginimg" />
     <div id="loginform">
-      <Form ref="formValidata" :model="formValidata" :rules="ruleValidata" :label-width="80">
+      <Form ref="formvalidate" :model="formvalidate" :rules="rulevalidate" :label-width="80">
         <FormItem label="用户名" prop="name">
           <Input
             type="text"
-            v-model="formValidata.name"
+            v-model="formvalidate.name"
             placeholder="昵称"
             clearable
             autocomplete="on"
@@ -15,16 +15,16 @@
         <FormItem label="密码" prop="pass">
           <Input
             type="password"
-            v-model="formValidata.pass"
+            v-model="formvalidate.pass"
             placeholder="密码"
             clearable
-            @keyup.enter.native="handleSubmit('formValidata')"
+            @keyup.enter.native="handleSubmit('formvalidate')"
           ></Input>
         </FormItem>
         <FormItem>
           <Button
             type="primary"
-            @click="handleSubmit('formValidata')"
+            @click="handleSubmit('formvalidate')"
             ghost
             style="margin-right:10px"
           >登录</Button>
@@ -39,11 +39,11 @@
 export default {
   data() {
     return {
-      formValidata: {
+      formvalidate: {
         name: "",
         pass: ""
       },
-      ruleValidata: {
+      rulevalidate: {
         name: [
           {
             required: true,
@@ -63,11 +63,12 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validata(valid => {
+      this.$refs[name].validate(valid => {
         let logindata={
-          name:this.formValidata.name,
-          password:this.formValidata.pass
+          name:this.formvalidate.name,
+          password:this.formvalidate.pass
         }
+        console.log(logindata)
         if (valid) {
           this.$Message.success("发送！");
           axios.post("http://127.0.0.1:8080/User/login", logindata).then(resp => {
