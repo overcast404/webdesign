@@ -46,13 +46,16 @@
 
 <script>
 export default {
-  name: "",
-  pass: "",
-  repass: "",
   data() {
-      const validataRepass=(rule,value,callback)=>{
-          if(valud!==formValidata)
+    const validataRepass = (rule, value, callback) => {
+        
+      if (value !== formValidata.pass) {
+
+        callback(new Error("两次密码输入不一致"));
+      } else {
+        callback();
       }
+    };
     return {
       formValidata: {
         name: "",
