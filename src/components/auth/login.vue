@@ -1,12 +1,12 @@
 <template>
   <div id="login">
-    <img src="../../assets/auth/login.png" alt id="loginimg" />
+    <img src="../../assets/auth/login.png" id="loginimg" />
     <div id="loginform">
-      <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+      <Form ref="formValidata" :model="formValidata" :rules="ruleValidata" :label-width="80">
         <FormItem label="用户名" prop="name">
           <Input
             type="text"
-            v-model="formValidate.name"
+            v-model="formValidata.name"
             placeholder="昵称"
             clearable
             autocomplete="on"
@@ -15,20 +15,20 @@
         <FormItem label="密码" prop="pass">
           <Input
             type="password"
-            v-model="formValidate.pass"
+            v-model="formValidata.pass"
             placeholder="密码"
             clearable
-            @keyup.enter.native="handleSubmit('formValidate')"
+            @keyup.enter.native="handleSubmit('formValidata')"
           ></Input>
         </FormItem>
         <FormItem>
           <Button
             type="primary"
-            @click="handleSubmit('formValidate')"
+            @click="handleSubmit('formValidata')"
             ghost
             style="margin-right:10px"
           >登录</Button>
-          <Button type="warning">注册</Button>
+          <Button type="warning" to="/auth/regist" ghost>注册</Button>
         </FormItem>
       </Form>
     </div>
@@ -39,11 +39,11 @@
 export default {
   data() {
     return {
-      formValidate: {
+      formValidata: {
         name: "",
         pass: ""
       },
-      ruleValidate: {
+      ruleValidata: {
         name: [
           {
             required: true,
@@ -63,10 +63,14 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validate(valid => {
+      this.$refs[name].validata(valid => {
+        let logindata={
+          name:this.formValidata.name,
+          password:this.formValidata.pass
+        }
         if (valid) {
           this.$Message.success("发送！");
-          axios.post("http://127.0.0.1:8080/User/login", name).then(resp => {
+          axios.post("http://127.0.0.1:8080/User/login", logindata).then(resp => {
             if (resp.data.Msg) {
               console.log(resp.data.Msg);
               this.$Message.success("登录成功！");
@@ -76,7 +80,7 @@ export default {
           this.$Message.error("Fail!");
         }
       });
-    },
+    }
   }
 };
 </script>

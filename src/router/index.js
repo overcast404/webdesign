@@ -12,11 +12,11 @@ const routes = [
     redirect: '/post',
     children: [
       {
-        path: '/post',
+        path: 'post',
         name: 'post',
         component: () => import('../components/postpage/page.vue')
       }, {
-        path: '/rent',
+        path: 'rent',
         name: 'rent',
         component: () => import('../components/rent/rentpage.vue')
       }
@@ -28,9 +28,14 @@ const routes = [
     component: () => import('../components/auth/auth.vue'),
     children: [
       {
-        path: '/',
+        path: '',
         name:'login',
         component:()=>import('../components/auth/login.vue')
+      },
+      {
+        path: 'regist',
+        name: 'regist',
+        component:()=>import('../components/auth/regist.vue')
       }
     ]
   }
