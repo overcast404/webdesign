@@ -85,10 +85,10 @@ export default {};
 <style lang="scss" scoped>
 #rents {
   width: 900px;
-  background-color: rgb(255, 175, 122);
+  background-color: rgb(250, 201, 169);
   border-radius: 5px;
   margin: 5px;
-  min-height: 1000px;
+  min-height: 800px;
 }
 
 #torent {

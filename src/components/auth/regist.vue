@@ -1,6 +1,8 @@
 <template>
   <div id="regist">
-    <img src="../../assets/auth/login.png" id="registimg" />
+    <router-link to="/">
+      <img src="../../assets/auth/login.png" id="registimg" />
+    </router-link>
     <div id="registform">
       <Form ref="formvalidate" :model="formvalidate" :rules="rulevalidate" :label-width="80">
         <FormItem label="用户名" prop="name">

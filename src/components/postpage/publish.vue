@@ -54,16 +54,16 @@ export default {
   data() {
     return {
       defaultList: [
-        {
-          name: "a42bdcc1178e62b4694c830f028db5c0",
-          url:
-            "https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar"
-        },
-        {
-          name: "bc7521e033abdd1e92222d733590f104",
-          url:
-            "https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar"
-        }
+        // {
+        //   name: "a42bdcc1178e62b4694c830f028db5c0",
+        //   url:
+        //     "https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar"
+        // },
+        // {
+        //   name: "bc7521e033abdd1e92222d733590f104",
+        //   url:
+        //     "https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar"
+        // }
       ],
       imgName: "",
       visible: false,
@@ -120,7 +120,7 @@ export default {
   //610
   width: 600px;
   margin: 5px 0;
-  background-color: tan;
+  background-color: rgb(236, 194, 140);
   padding: 5px 0;
   border-radius: 5px;
 }

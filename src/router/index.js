@@ -19,6 +19,11 @@ const routes = [
         path: 'rent',
         name: 'rent',
         component: () => import('../components/rent/rentpage.vue')
+      },
+      {
+        path: '/library',
+        name: 'library',
+        component:()=>import('../components/library/lobby.vue')
       }
     ]
   },
@@ -38,7 +43,8 @@ const routes = [
         component:()=>import('../components/auth/regist.vue')
       }
     ]
-  }
+  },
+  
 ]
 
 const router = new VueRouter({

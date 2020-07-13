@@ -4,7 +4,7 @@
     <span>
       <router-link class="a" to="/">首页</router-link>
       <router-link class="a" to="/rent">校园借阅</router-link>
-      <router-link class="a" to="#">图书馆</router-link>
+      <router-link class="a" to="/library">图书馆</router-link>
     </span>
 
     <router-link to="/auth" id="right">

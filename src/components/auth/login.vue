@@ -1,6 +1,8 @@
 <template>
   <div id="login">
-    <img src="../../assets/auth/login.png" id="loginimg" />
+    <router-link to="/">
+      <img src="../../assets/auth/login.png" id="loginimg" />
+    </router-link>
     <div id="loginform">
       <Form ref="formvalidate" :model="formvalidate" :rules="rulevalidate" :label-width="80">
         <FormItem label="用户名" prop="name">
@@ -64,12 +66,12 @@ export default {
   methods: {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
-        let logindata={
-          name:this.formvalidate.name,
-          password:this.formvalidate.pass
-        }
+        let logindata = {
+          name: this.formvalidate.name,
+          password: this.formvalidate.pass
+        };
         if (valid) {
-          console.log("验证成功")
+          console.log("验证成功");
           this.axios.get("/auth.json", logindata).then(resp => {
             console.log(resp.data);
             if (resp.data) {

@@ -69,7 +69,7 @@ export default {};
 }
 #classify {
   height: 50px;
-  background-color: rgb(228, 177, 133);
+  background-color: rgb(241, 189, 143);
   border-radius: 5px;
   margin: 5px 0 -10px 0;
 }
@@ -109,7 +109,7 @@ export default {};
 .content pre {
   white-space: pre-wrap;
   line-height: 20px;
-  height: 60px;
+  max-height: 60px;
   overflow: hidden;
 }
 .postimg {

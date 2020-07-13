@@ -28,7 +28,7 @@ export default {};
 <style lang="scss" scoped>
 #leftnav {
   width: 250px;
-  background-color: rgb(253, 209, 152);
+  background-color: rgb(253, 225, 188);
   border-radius: 5px;
   margin: 5px;
   position: sticky;
