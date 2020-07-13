@@ -25,7 +25,7 @@
         multiple
         paste
         type="drag"
-        action="#"
+        action="/img/posts/"
         name="postimg"
         style="display: inline-block;width:58px;"
       >
