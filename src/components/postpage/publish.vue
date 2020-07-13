@@ -3,43 +3,48 @@
     <div id="inputs">
       <Input placeholder="标题" style="margin-bottom:2px" />
       <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." />
-      <div class="demo-upload-list" v-for="item in uploadList">
-        <template v-if="item.status === 'finished'">
-          <img :src="item.url" />
-          <div class="demo-upload-list-cover">
-            <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
-            <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
-          </div>
-        </template>
-        <template v-else>
-          <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-        </template>
-      </div>
-      <Upload
-        ref="upload"
-        :show-upload-list="false"
-        :default-file-list="defaultList"
-        :on-success="handleSuccess"
-        :format="['jpg','jpeg','png']"
-        :before-upload="handleBeforeUpload"
-        multiple
-        paste
-        type="drag"
-        action="/img/posts/"
-        name="postimg"
-        style="display: inline-block;width:58px;"
-      >
-        <div style="width: 58px;height:58px;line-height: 58px;">
-          <Icon type="ios-camera" size="20"></Icon>
+      <div id="imgupload">
+        <div class="demo-upload-list" v-for="item in uploadList">
+          <template v-if="item.status === 'finished'">
+            <img :src="item.url" />
+            <div class="demo-upload-list-cover">
+              <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
+              <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
+            </div>
+          </template>
+          <template v-else>
+            <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+          </template>
         </div>
-      </Upload>
-      <Modal title="View Image" v-model="visible">
-        <img
-          :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'"
-          v-if="visible"
-          style="width: 100%"
-        />
-      </Modal>
+        <Upload
+          ref="upload"
+          :show-upload-list="false"
+          :default-file-list="defaultList"
+          :on-success="handleSuccess"
+          :format="['jpg','jpeg','png']"
+          :before-upload="handleBeforeUpload"
+          multiple
+          paste
+          type="drag"
+          action="/img/posts/"
+          name="postimg"
+          style="display: inline-block;width:58px;"
+        >
+          <div style="width: 58px;height:58px;line-height: 58px;">
+            <Icon type="ios-camera" size="20"></Icon>
+          </div>
+        </Upload>
+        <Modal title="View Image" v-model="visible">
+          <img
+            :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'"
+            v-if="visible"
+            style="width: 100%"
+          />
+        </Modal>
+      </div>
+      <div>
+        <Button id="publishbtn" ghost>发布</Button>
+      </div>
     </div>
   </div>
 </template>
@@ -122,6 +127,12 @@ export default {
 #inputs {
   width: 98%;
   margin: auto;
+}
+// #publishbtn{
+//   background-color:darkgoldenrod;
+// }
+#imgupload{
+  margin: 5px 0;
 }
 .demo-upload-list {
   display: inline-block;

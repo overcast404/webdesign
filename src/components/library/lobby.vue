@@ -1,5 +1,5 @@
 <template>
-    <div id="imgupload">
+    <div>
 
     </div>
 </template>

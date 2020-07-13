@@ -68,12 +68,12 @@ export default {
           name:this.formvalidate.name,
           password:this.formvalidate.pass
         }
-        console.log(logindata)
         if (valid) {
-          this.$Message.success("发送！");
-          this.axios.post("http://127.0.0.1:8090/User/login", logindata).then(resp => {
-            if (resp.data.Msg) {
-              console.log(resp.data.Msg);
+          console.log("验证成功")
+          this.axios.get("/auth.json", logindata).then(resp => {
+            console.log(resp.data);
+            if (resp.data) {
+              console.log(resp.data);
               this.$Message.success("登录成功！");
             }
           });

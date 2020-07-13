@@ -1,7 +1,16 @@
 <template>
   <div id="posts">
     <div id="classify">
-
+      <a href>
+        <img src="../../assets/img/postpage/new.png" alt />
+      </a>
+      <a href>
+        <img src="../../assets/img/postpage/hot.png" alt />
+      </a>
+      <a href>
+        <img src="../../assets/img/postpage/lover.png" alt />
+      </a>
+      
     </div>
     <div class="onepost">
       <div class="head">
@@ -28,17 +37,16 @@
           <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
         </div>
         <div class="option">
-          <a href="">
-            <img src="../../assets/img/postpage/posts/like.png" alt="">
+          <a href>
+            <img src="../../assets/img/postpage/posts/like.png" alt />
           </a>
-          <a href="">
-            <img src="../../assets/img/postpage/posts/comment.png" alt="">
+          <a href>
+            <img src="../../assets/img/postpage/posts/comment.png" alt />
           </a>
-          <a href="">
-            <img src="../../assets/img/postpage/posts/collect.png" alt="">
+          <a href>
+            <img src="../../assets/img/postpage/posts/collect.png" alt />
           </a>
         </div>
-        
       </div>
     </div>
   </div>
@@ -65,6 +73,14 @@ export default {};
   border-radius: 5px;
   margin: 5px 0 -10px 0;
 }
+#classify img {
+  width: 40px;
+  // float: left;
+  margin:5px;
+}
+#classify a{
+  margin:0 15px;
+}
 .onepost {
   margin: 5px 0;
   background-color: wheat;
@@ -86,9 +102,9 @@ export default {};
 .content {
   margin: 10px;
 }
-.content a{
+.content a {
   text-decoration: none;
-  color:rgba(0, 0, 0, 0.651);
+  color: rgba(0, 0, 0, 0.651);
 }
 .content pre {
   white-space: pre-wrap;
@@ -104,8 +120,8 @@ export default {};
   width: 100%;
   border-radius: 10px;
 }
-.option img{
-  width:30px;
-  margin:0 80px;
+.option img {
+  width: 30px;
+  margin: 0 80px;
 }
 </style>
