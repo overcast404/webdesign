@@ -53,7 +53,7 @@ export default {
 #leftnav {
   //270
   width: 260px;
-  height: 230px;
+  height: 220px;
   background-color: rgb(250, 226, 195);
   border-radius: 5px;
   margin: 5px;

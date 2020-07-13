@@ -1,8 +1,5 @@
 <template>
   <div id="publish">
-    <template v-if="username">
-
-    </template>
     <div id="inputs">
       <Input placeholder="标题" style="margin-bottom:2px" />
       <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." />
@@ -29,7 +26,7 @@
           multiple
           paste
           type="drag"
-          action="/img/posts/"
+          action="http://127.0.0.1:8090/saveimg"
           name="postimg"
           style="display: inline-block;width:58px;"
         >
@@ -39,7 +36,7 @@
         </Upload>
         <Modal title="View Image" v-model="visible">
           <img
-            :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'"
+            :src="imgName"
             v-if="visible"
             style="width: 100%"
           />
@@ -56,10 +53,7 @@
 export default {
   data() {
     return {
-      username,
-      defaultList: [
-        
-      ],
+      defaultList: [],
       imgName: "",
       visible: false,
       uploadList: []
@@ -75,9 +69,10 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      file.url =
-        "https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar";
-      file.name = "7eb99afb9d5f317c912f08b5212fd69a";
+      console.log(res)
+      console.log(file)
+      file.url = "/img";
+      file.name = "lalalal";
     },
     handleFormatError(file) {
       this.$Notice.warning({
@@ -126,7 +121,7 @@ export default {
 // #publishbtn{
 //   background-color:darkgoldenrod;
 // }
-#imgupload{
+#imgupload {
   margin: 5px 0;
 }
 .demo-upload-list {

@@ -73,7 +73,7 @@ export default {
         };
         if (valid) {
           console.log("验证成功");
-          this.axios.get("http://127.0.0.1:8090/login", logindata).then(resp => {
+          this.axios.get("/auth.json", logindata).then(resp => {
             if (resp.data) {
               localStorage.setItem("username", resp.data.username);
               localStorage.setItem("avatar", resp.data.avatar);
