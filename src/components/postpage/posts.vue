@@ -7,7 +7,7 @@
       <a href>
         <img src="../../assets/img/postpage/hot.png" alt />
       </a>
-      <a href>
+      <a v-if="avatar" href>
         <img src="../../assets/img/postpage/lover.png" alt />
       </a>
       
@@ -53,7 +53,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      avatar:localStorage.getItem("avatar")
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

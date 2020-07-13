@@ -7,14 +7,33 @@
       <router-link class="a" to="/library">图书馆</router-link>
     </span>
 
-    <router-link to="/auth" id="right">
-      <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt="介是用户头像" />
-    </router-link>
+    <template v-if="avatar">
+      <a @click="logout" id="right">
+        <img class="avatar" :src="avatar" alt="介是用户头像" title="点击注销" />
+      </a>
+    </template>
+    <template v-else>
+      <div id="right">
+        <Button type="warning" ghost shape="circle" to="/auth">登录</Button>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      avatar: localStorage.getItem("avatar")
+    };
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.go(0);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

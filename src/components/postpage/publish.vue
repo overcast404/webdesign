@@ -1,5 +1,8 @@
 <template>
   <div id="publish">
+    <template v-if="username">
+
+    </template>
     <div id="inputs">
       <Input placeholder="标题" style="margin-bottom:2px" />
       <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." />
@@ -53,17 +56,9 @@
 export default {
   data() {
     return {
+      username,
       defaultList: [
-        // {
-        //   name: "a42bdcc1178e62b4694c830f028db5c0",
-        //   url:
-        //     "https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar"
-        // },
-        // {
-        //   name: "bc7521e033abdd1e92222d733590f104",
-        //   url:
-        //     "https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar"
-        // }
+        
       ],
       imgName: "",
       visible: false,

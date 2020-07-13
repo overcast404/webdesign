@@ -2,7 +2,7 @@
   <div id="page">
     <leftnav></leftnav>
     <div>
-        <publish></publish>
+        <publish v-if="username"></publish>
          <posts></posts>
     </div>
     <rightnav></rightnav>
@@ -15,6 +15,11 @@ import leftnav from "./leftnav";
 import rightnav from "./rightnav";
 import publish from "./publish";
 export default {
+  data(){
+    return{
+      username:localStorage.getItem("username")
+    }
+  },
   components: {
     posts,
     leftnav,

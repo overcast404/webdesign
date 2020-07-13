@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -73,14 +74,18 @@ export default {
         if (valid) {
           console.log("验证成功");
           this.axios.get("/auth.json", logindata).then(resp => {
-            console.log(resp.data);
             if (resp.data) {
-              console.log(resp.data);
+              localStorage.setItem("username", resp.data.username);
+              localStorage.setItem("avatar", resp.data.avatar);
               this.$Message.success("登录成功！");
+              this.$router.push("/");
             }
+          })
+          .catch(error=>{
+            this.$Message.error("请求失败！");
           });
         } else {
-          this.$Message.error("Fail!");
+          this.$Message.error("填写有误！");
         }
       });
     }
