@@ -71,7 +71,7 @@ export default {
         console.log(logindata)
         if (valid) {
           this.$Message.success("发送！");
-          axios.post("http://127.0.0.1:8080/User/login", logindata).then(resp => {
+          this.axios.post("http://127.0.0.1:8090/User/login", logindata).then(resp => {
             if (resp.data.Msg) {
               console.log(resp.data.Msg);
               this.$Message.success("登录成功！");
