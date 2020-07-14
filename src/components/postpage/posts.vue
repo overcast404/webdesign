@@ -11,38 +11,32 @@
         <img src="../../assets/img/postpage/lover.png" alt />
       </a>
     </div>
-    <div class="onepost">
+    <div class="onepost" v-for="(post,index) in posts">
       <div class="head">
         <router-link to="#">
-          <img src="../../assets/img/useravatar/useravatar.png" class="avatar" />
-          <span class="username">用户名</span>
+          <img :src="post.img" class="avatar" />
+          <span class="username">{{post.username}}</span>
         </router-link>
+        <span>{{post.scanum}}</span>
       </div>
       <div class="content">
         <router-link to="#">
           <div>
-            <h2>这里是标题</h2>
+            <h2>{{post.title}}</h2>
           </div>
-          <pre>    这里是内容垃圾费打卡机疯狂垃圾分类卡解放路卡机了会计法练级电极法欧司朗九分裤辣椒粉卡拉胶联机
-九分裤大了就分开了
-          </pre>
+          <pre>{{post.content}}</pre>
         </router-link>
-        <div class="postimgs">
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
-          <img class="postimg" src="../../assets/img/postpage/posts/postimg.jpg" alt="这里是图片" />
+        <div class="postimgs" v-for="(img,index) in post.avatar">
+          <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
         </div>
         <div class="option">
-          <a href>
+          <a href @click="like(post.id)">
             <img src="../../assets/img/postpage/posts/like.png" alt />
           </a>
-          <a href>
+          <a href @click="like(post.id)">
             <img src="../../assets/img/postpage/posts/comment.png" alt />
           </a>
-          <a href>
+          <a href @click="like(post.id)">
             <img src="../../assets/img/postpage/posts/collect.png" alt />
           </a>
         </div>
@@ -58,12 +52,14 @@ export default {
     this.axios
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
+        posts = resp.data;
         console.log(resp.data);
       })
       .catch(error => {
         console.log(error);
       });
     return {
+      posts,
       avatar: localStorage.getItem("avatar")
     };
   }
@@ -123,7 +119,6 @@ export default {
 .content pre {
   white-space: pre-wrap;
   line-height: 20px;
-  max-height: 60px;
   overflow: hidden;
 }
 .postimg {
