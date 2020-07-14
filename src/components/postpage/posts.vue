@@ -47,21 +47,19 @@
 
 <script>
 export default {
-  posts:[],
-  beforeCreate(){
-    this.axios
-      .get("http://127.0.0.1:8090/getCardList")
-      .then(resp => {
-        this.posts = resp.data;
-        console.log(posts);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
   data() {
+    let posts=[]
+    // this.axios
+    //   .get("http://127.0.0.1:8090/getCardList")
+    //   .then(resp => {
+    //     this.posts = resp.data;
+    //     console.log(posts);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
     return {
-      posts:this.posts,
+      posts,
       avatar: localStorage.getItem("avatar")
     };
   }
