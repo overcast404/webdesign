@@ -105,7 +105,7 @@ export default {
     sharebook() {
       let id = localStorage.getItem("id");
       this.axios
-        .post("", { bookname: this.searchin, userid: id })
+        .post("", { bookname: this.searchin, useid: id })
         .then(resp => {
           console.log(resp.data);
         })
