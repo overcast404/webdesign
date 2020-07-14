@@ -2,7 +2,7 @@
   <div id="publish">
     <div id="inputs">
       <Input placeholder="标题" style="margin-bottom:2px" v-model="publishdata.title" />
-      <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." :v-model="publishdata.content" />
+      <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." v-model="publishdata.content" />
       <div id="imgupload">
         <div class="demo-upload-list" v-for="item in uploadList">
           <template v-if="item.status === 'finished'">
@@ -16,7 +16,6 @@
             <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
           </template>
         </div>
-        {{publishdata.title}}
         <Upload
           ref="upload"
           :show-upload-list="false"
@@ -79,7 +78,7 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      this.publishdata.img.push(res.avator);
+      this.publishdata.avator.push(res.avator);
     },
     handleFormatError(file) {
       this.$Notice.warning({
