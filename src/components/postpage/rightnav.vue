@@ -2,7 +2,7 @@
   <div id="rightnav">
     <div id="hotposts">
       <h3>热门话题：</h3>
-      <template v-for="post in tenposts">
+      <template v-for="(post,index) in tenposts">
         <div class="hotpost">
           <router-link to="#" class="a" :style="{fontSize:fontsize[index]+'px'}">{{post}}</router-link>
         </div>
