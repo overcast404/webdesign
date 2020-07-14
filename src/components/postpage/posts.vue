@@ -61,9 +61,7 @@ export default {
         console.log(error);
       });
     return {
-      posts:[{
-        id:"1"
-      }],
+      posts,
       avatar: localStorage.getItem("avatar")
     };
   },
