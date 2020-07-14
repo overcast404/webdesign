@@ -10,8 +10,6 @@
 import topnav from "../components/nav/top";
 import bottom from "../components/nav/bottom";
 export default {
-  data(){
-  },
   components: {
     topnav,
     bottom
