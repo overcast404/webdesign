@@ -10,7 +10,7 @@
         style="width:100%"
         icon="ios-search"
       >
-        <a v-for="searchrs in searchout">{{searchrs.name}}</a>
+        <Option v-for="searchrs in searchout" :key="searchrs">{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
     <template v-for="book in searchout">
@@ -46,8 +46,8 @@ export default {
       this.axios
         .post("http://127.0.0.1:8090/searchbook",{"keyword":value})
         .then(resp => {
-          console.log(resp.data);
-          this.searchout;
+          this.searchout=resp.data;
+          console.log(this.searchout);
         })
         .catch(error => {
           console.log("检索书籍请求出错！");

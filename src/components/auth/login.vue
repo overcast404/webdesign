@@ -83,6 +83,8 @@ export default {
               localStorage.setItem("postnum",resp.data.cardnum);
               this.$Message.success("登录成功！");
               this.$router.push("/");
+            }else{
+              this.$Message.error("用户名或密码错误！")
             }
           })
           .catch(error=>{
