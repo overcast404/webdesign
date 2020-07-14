@@ -31,13 +31,13 @@
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </div>
           <div class="option">
-            <a href @click="like(post.id)">
+            <a @click="like(post.id)">
               <img src="../../assets/img/postpage/posts/like.png" alt />
             </a>
-            <a href @click="like(post.id)">
+            <a @click="like(post.id)">
               <img src="../../assets/img/postpage/posts/comment.png" alt />
             </a>
-            <a href @click="like(post.id)">
+            <a @click="like(post.id)">
               <img src="../../assets/img/postpage/posts/collect.png" alt />
             </a>
           </div>
