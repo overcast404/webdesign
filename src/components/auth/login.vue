@@ -72,7 +72,7 @@ export default {
           password: this.formvalidate.pass
         };
         if (valid) {
-          this.axios.get("/auth.json", logindata).then(resp => {
+          this.axios.get("http://127.0.0.1:8090/login", logindata).then(resp => {
             if (resp.data) {
               console.log(resp.data)
               localStorage.setItem("username", resp.data.username);
