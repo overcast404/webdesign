@@ -31,7 +31,7 @@
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </div>
           <div class="option">
-            <a @click="like(post.id)">
+            <a :title="post.id" @click="like(this.title)">
               <img src="../../assets/img/postpage/posts/like.png" alt />
             </a>
             <a @click="like(post.id)">
