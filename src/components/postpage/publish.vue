@@ -1,8 +1,8 @@
 <template>
   <div id="publish">
     <div id="inputs">
-      <Input placeholder="标题" style="margin-bottom:2px" />
-      <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." />
+      <Input placeholder="标题" style="margin-bottom:2px" :value="publishdata.title" />
+      <Input type="textarea" :rows="4" placeholder="来和大家聊聊吧..." :value="publishdata.content" />
       <div id="imgupload">
         <div class="demo-upload-list" v-for="item in uploadList">
           <template v-if="item.status === 'finished'">
@@ -34,15 +34,11 @@
           </div>
         </Upload>
         <Modal title="View Image" v-model="visible">
-          <img
-            :src="imgName"
-            v-if="visible"
-            style="width: 100%"
-          />
+          <img :src="imgName" v-if="visible" style="width: 100%" />
         </Modal>
       </div>
       <div>
-        <Button id="publishbtn" ghost>发布</Button>
+        <Button id="publishbtn" ghost @click="topublish">发布</Button>
       </div>
     </div>
   </div>
@@ -54,10 +50,25 @@ export default {
     return {
       imgName: "",
       visible: false,
-      uploadList: []
+      uploadList: [],
+      publishdata: {
+        title: "",
+        content: "",
+        userid: localStorage.getItem("id"),
+        img: []
+      }
     };
   },
   methods: {
+    topublish() {
+      console.log(this.publishdata);
+      this.axios
+        .post("http://127.0.0.1:8090/addCard", this.publishdata)
+        .then(resp => {
+          console.log(resp.data);
+        })
+        .catch(error => {});
+    },
     handleView(name) {
       this.imgName = name;
       this.visible = true;
@@ -67,7 +78,7 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      console.log(this.uploadList)
+      this.publishdata.img.push(res.avator);
     },
     handleFormatError(file) {
       this.$Notice.warning({

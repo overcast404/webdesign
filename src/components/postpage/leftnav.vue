@@ -41,10 +41,12 @@
 <script>
 export default {
   data() {
-    let nums={
+    let userdata={
       collectnum:"",
       rentnum:"",
-      postnum:""
+      postnum:"",
+      sign:"",
+      
     }
     // this.axios.post("#").then(resp=>{
 
