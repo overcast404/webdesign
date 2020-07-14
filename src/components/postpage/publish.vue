@@ -20,7 +20,6 @@
           ref="upload"
           :show-upload-list="false"
           :on-success="handleSuccess"
-          :on-progress="handleProgress"
           :format="['jpg','jpeg','png']"
           :before-upload="handleBeforeUpload"
           multiple
@@ -59,11 +58,6 @@ export default {
     };
   },
   methods: {
-    handleProgress(event,file,fileList){
-      console.log(event)
-      console.log(fileList)
-      console.log(file.url)
-    },
     handleView(name) {
       this.imgName = name;
       this.visible = true;
@@ -73,10 +67,8 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      console.log(res)
-      console.log(file)
-      // file.url = "/img";
-      // file.name = "lalalal";
+      uploadList.push({name:res.name,url:res.avatar,status:file.status})
+      console.log(uploadList)
     },
     handleFormatError(file) {
       this.$Notice.warning({
