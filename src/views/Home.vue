@@ -10,7 +10,7 @@
 import topnav from "../components/nav/top";
 import bottom from "../components/nav/bottom";
 export default {
-  beforeCreate() {
+  data(){
     console.log("===============");
     let id=localStorage.getItem("id")
     if (!localStorage.getItem("username")) {
@@ -22,6 +22,9 @@ export default {
           localStorage.setItem("avatar", "/img/useravatar/" + resp.data.avator);
           localStorage.setItem("sign", resp.data.sign);
         });
+    }
+    return{
+      
     }
   },
   components: {

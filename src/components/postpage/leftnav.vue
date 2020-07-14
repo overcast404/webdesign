@@ -46,7 +46,7 @@ export default {
       rentnum:"",
       postnum:"",
       sign:"",
-      
+
     }
     // this.axios.post("#").then(resp=>{
 
@@ -56,7 +56,6 @@ export default {
     return {
       avatar:localStorage.getItem("avatar"),
       username:localStorage.getItem("username"),
-      nums
     };
   }
 };
