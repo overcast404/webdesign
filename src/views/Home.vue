@@ -13,7 +13,7 @@ export default {
   beforeCreate(){
     console.log("===============")
     if(!localStorage.getItem("username"))
-    this.axios.get("http://127.0.0.1:8090/getUserByid").then(resp=>{
+    this.axios.post("http://127.0.0.1:8090/getUserByid",localStorage.getItem("id")).then(resp=>{
       console.log(resp.data)
       localStorage.setItem("username",resp.data.name)
       localStorage.setItem("avatar","/img/"+resp.data.avator)
