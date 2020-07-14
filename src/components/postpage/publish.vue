@@ -67,8 +67,8 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      uploadList.push({name:res.name,url:"D:/coursedesign/cardimg/"+res.avator,status:file.status})
-      console.log(uploadList)
+      this.uploadList.push({name:res.name,url:"D:/coursedesign/cardimg/"+res.avator,status:file.status})
+      console.log(this.uploadList)
     },
     handleFormatError(file) {
       this.$Notice.warning({
