@@ -43,76 +43,19 @@
       <div id="torentbox"></div>
     </div>
     <div id="rentlist">
-      <div class="book">
+      <template v-for="thisbook in bookshelf">
+        <div class="book">
         <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
+          <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
+          <h3>{{thisbook.name}}</h3>
         </center>
         <div class="user">
           <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
           <span>用户名</span>
         </div>
       </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
-      <div class="book">
-        <center>
-          <img class="bookimg" src="../../assets/img/library/book.jpg" alt />
-          <h3>《我的小阳台四季有花》</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
-      </div>
+      </template>
+      
     </div>
   </div>
   </div>
@@ -135,8 +78,6 @@ export default {
         .then(resp => {
           this.searchout = resp.data;
           this.thebook = this.searchout[0];
-          console.log(this.searchout);
-          console.log(this.thebook);
         })
         .catch(error => {
           console.log("检索书籍请求出错！");
