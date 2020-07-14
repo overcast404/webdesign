@@ -64,6 +64,11 @@ export default {
       posts,
       avatar: localStorage.getItem("avatar")
     };
+  },
+  methods:{
+    like(id){
+      console.log(id)
+    }
   }
 };
 </script>
@@ -122,6 +127,7 @@ export default {
   white-space: pre-wrap;
   line-height: 20px;
   overflow: hidden;
+  max-height: 60px;
 }
 .postimg {
   width: 180px;
