@@ -83,19 +83,19 @@ export default {
           console.log("检索书籍请求出错！");
           console.log(error);
         });
-    },
-    watch: {
-      searchin: function() {
-        this.axios
-          .post("http://127.0.0.1:8090/searchborrow", this.searchin)
-          .then(resp => {
-            console.log(resp.data);
-            this.bookshelf = resp.data;
-          })
-          .catch(error => {
-            console.log("出错了！！！！");
-          });
-      }
+    }
+  },
+  watch: {
+    searchin: function() {
+      this.axios
+        .post("http://127.0.0.1:8090/searchborrow", this.searchin)
+        .then(resp => {
+          console.log(resp.data);
+          this.bookshelf = resp.data;
+        })
+        .catch(error => {
+          console.log("出错了！！！！");
+        });
     }
   }
 };
