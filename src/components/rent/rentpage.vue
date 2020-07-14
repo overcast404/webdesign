@@ -1,63 +1,62 @@
 <template>
   <div id="rentpage">
-      <div id="leftnav">
-    <div id="searchin">
-      <h3>检索书籍</h3>
-      <AutoComplete
-        v-model="searchin"
-        @on-search="handleSearch"
-        placeholder="我的小阳台四季有花"
-        style="width:100%"
-        icon="ios-search"
-      >
-        <Option
-          v-for="searchrs in searchout"
-          :value="searchrs.name"
-          :key="searchrs.id"
-        >{{searchrs.name}}</Option>
-      </AutoComplete>
-    </div>
-    <div id="searchlibrary">
-      <template v-if="thebook.name">
-        <center>
-          <img :src="'/img/books/'+thebook.img" alt />
-        </center>
-        <p>书名：{{thebook.name}}</p>
-        <p>作者：{{thebook.author}}</p>
-        <p>出版社：{{thebook.publisher}}</p>
-        <p>出品方：{{thebook.produce}}</p>
-        <p>出版年：{{thebook.datetime}}</p>
-        <p>页数：{{thebook.page}}</p>
-        <p>定价：{{thebook.price}}</p>
-        <p>装帧：{{thebook.zhuangz}}</p>
-        <p>ISBN：{{thebook.ISBN}}</p>
-      </template>
-      <template v-else>
-        <p id="res">无结果</p>
-      </template>
-    </div>
-  </div>
-      <div id="rents">
-    <div id="torent">
-      <Button ghost>出借</Button>
-      <div id="torentbox"></div>
-    </div>
-    <div id="rentlist">
-      <template v-for="thisbook in bookshelf">
-        <div class="book">
-        <center>
-          <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
-          <h3>{{thisbook.name}}</h3>
-        </center>
-        <div class="user">
-          <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-          <span>用户名</span>
-        </div>
+    <div id="leftnav">
+      <div id="searchin">
+        <h3>检索书籍</h3>
+        <AutoComplete
+          v-model="searchin"
+          @on-search="handleSearch"
+          placeholder="我的小阳台四季有花"
+          style="width:100%"
+          icon="ios-search"
+        >
+          <Option
+            v-for="searchrs in searchout"
+            :value="searchrs.name"
+            :key="searchrs.id"
+          >{{searchrs.name}}</Option>
+        </AutoComplete>
       </div>
-      </template>
-      
+      <div id="searchlibrary">
+        <template v-if="thebook.name">
+          <center>
+            <img :src="'/img/books/'+thebook.img" alt />
+          </center>
+          <p>书名：{{thebook.name}}</p>
+          <p>作者：{{thebook.author}}</p>
+          <p>出版社：{{thebook.publisher}}</p>
+          <p>出品方：{{thebook.produce}}</p>
+          <p>出版年：{{thebook.datetime}}</p>
+          <p>页数：{{thebook.page}}</p>
+          <p>定价：{{thebook.price}}</p>
+          <p>装帧：{{thebook.zhuangz}}</p>
+          <p>ISBN：{{thebook.ISBN}}</p>
+        </template>
+        <template v-else>
+          <p id="res">无结果</p>
+        </template>
+      </div>
     </div>
-  </div>
+    <div id="rents">
+      <div id="torent">
+        <Button ghost>出借</Button>
+        <div id="torentbox"></div>
+      </div>
+      <div id="rentlist">
+        <template v-for="thisbook in bookshelf">
+          <div class="book">
+            <center>
+              <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
+              <h3>{{thisbook.name}}</h3>
+            </center>
+            <div class="user">
+              <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
+              <span>用户名</span>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,7 +66,8 @@ export default {
     return {
       searchin: "",
       searchout: [],
-      thebook: {}
+      thebook: {},
+      bookshelf: []
     };
   },
   methods: {
@@ -84,16 +84,17 @@ export default {
           console.log(error);
         });
     },
-    computed:{
-      bookshelf:function(){
-        let shelf=[]
-        this.axios.post("http://127.0.0.1:8090/searchborrow",this.searchin).then(resp=>{
-          console.log(resp.data)
-          shelf=resp.data
-        }).catch(error=>{
-          console.log("出错了！！！！")
-        })
-        return shelf
+    watch: {
+      searchin: function() {
+        this.axios
+          .post("http://127.0.0.1:8090/searchborrow", this.searchin)
+          .then(resp => {
+            console.log(resp.data);
+            this.bookshelf = resp.data;
+          })
+          .catch(error => {
+            console.log("出错了！！！！");
+          });
       }
     }
   }
@@ -101,13 +102,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#rentpage{
-  width:1150px;
-  margin:auto;
-  display:flex;
+#rentpage {
+  width: 1150px;
+  margin: auto;
+  display: flex;
   flex-direction: row;
 }
-#res{
+#res {
   position: absolute;
   top: 50%;
   left: 50%;
