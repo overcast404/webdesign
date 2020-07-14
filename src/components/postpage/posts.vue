@@ -15,7 +15,7 @@
       <div class="onepost">
         <div class="head">
           <router-link to="#">
-            <img :src="post.img" class="avatar" />
+            <img :src="'/img/uaeravatar/'+post.img" class="avatar" />
             <span class="username">{{post.username}}</span>
           </router-link>
           <span>{{post.scanum}}</span>
