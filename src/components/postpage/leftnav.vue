@@ -20,7 +20,7 @@
             <td>帖子</td>
           </tr>
           <tr>
-            <td>{{ollectnum}}</td>
+            <td>{{collectnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
