@@ -19,15 +19,15 @@
             <td>帖子</td>
           </tr>
           <tr>
-            <td>{{nums.collectnum}}</td>
+            <td>{{userdata.collectnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>{{nums.rentnum}}</td>
+            <td>{{userdata.rentnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>{{nums.postnum}}</td>
+            <td>{{userdata.postnum}}</td>
           </tr>
         </table>
       </div>
@@ -46,16 +46,11 @@ export default {
       rentnum:"",
       postnum:"",
       sign:"",
-
     }
-    // this.axios.post("#").then(resp=>{
-
-    // }).catch(error=>{
-    //   console.log(error)
-    // })
     return {
       avatar:localStorage.getItem("avatar"),
       username:localStorage.getItem("username"),
+      userdata
     };
   }
 };
