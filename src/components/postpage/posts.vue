@@ -55,6 +55,10 @@
 <script>
 export default {
   data(){
+    let posts
+    this.axios.get("").then(resp=>{
+      
+    })
     return{
       avatar:localStorage.getItem("avatar")
     }

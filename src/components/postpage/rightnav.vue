@@ -12,6 +12,12 @@
 <script>
 export default {
   data() {
+    let tenposts
+    this.axios.get("").then(resp=>{
+      tenposts=resp.data
+    }).catch(error=>{
+      console.log(error)
+    })
     return {
       tenposts: [
         { posttitle: "《游戏的终结》" },

@@ -19,8 +19,8 @@
         <Upload
           ref="upload"
           :show-upload-list="false"
-          :default-file-list="defaultList"
           :on-success="handleSuccess"
+          :on-progress="handleProgress"
           :format="['jpg','jpeg','png']"
           :before-upload="handleBeforeUpload"
           multiple
@@ -53,13 +53,17 @@
 export default {
   data() {
     return {
-      defaultList: [],
       imgName: "",
       visible: false,
       uploadList: []
     };
   },
   methods: {
+    handleProgress(event,file,fileList){
+      console.log(event)
+      console.log(fileList)
+      console.log(file.url)
+    },
     handleView(name) {
       this.imgName = name;
       this.visible = true;
@@ -71,8 +75,8 @@ export default {
     handleSuccess(res, file) {
       console.log(res)
       console.log(file)
-      file.url = "/img";
-      file.name = "lalalal";
+      // file.url = "/img";
+      // file.name = "lalalal";
     },
     handleFormatError(file) {
       this.$Notice.warning({

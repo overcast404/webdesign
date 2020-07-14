@@ -19,15 +19,15 @@
             <td>帖子</td>
           </tr>
           <tr>
-            <td>1</td>
+            <td>{{nums.collectnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>2</td>
+            <td>{{nums.rentnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>3</td>
+            <td>{{nums.postnum}}</td>
           </tr>
         </table>
       </div>
@@ -41,9 +41,20 @@
 <script>
 export default {
   data() {
+    let nums={
+      collectnum:"",
+      rentnum:"",
+      postnum:""
+    }
+    this.axios.get("#").then(resp=>{
+
+    }).catch(error=>{
+      console.log(error)
+    })
     return {
       avatar:localStorage.getItem("avatar"),
-      username:localStorage.getItem("username")
+      username:localStorage.getItem("username"),
+      nums
     };
   }
 };

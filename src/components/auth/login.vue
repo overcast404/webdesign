@@ -72,7 +72,6 @@ export default {
           password: this.formvalidate.pass
         };
         if (valid) {
-          console.log("验证成功");
           this.axios.get("/auth.json", logindata).then(resp => {
             if (resp.data) {
               localStorage.setItem("username", resp.data.username);
