@@ -17,7 +17,7 @@
       </AutoComplete>
     </div>
     <div id="searchlibrary">
-      <template v-if="thebook!={}">
+      <template v-if="thebook.name">
         <center>
           <img :src="'/img/books/'+thebook.img" alt />
         </center>
