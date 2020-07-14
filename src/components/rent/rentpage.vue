@@ -85,13 +85,15 @@ export default {
         });
     },
     computed:{
-      bookshelf(){
+      bookshelf:function(){
+        let shelf=[]
         this.axios.post("http://127.0.0.1:8090/searchborrow",this.searchin).then(resp=>{
           console.log(resp.data)
-          return resp.data
+          shelf=resp.data
         }).catch(error=>{
-          return error
+          console.log("出错了！！！！")
         })
+        return shelf
       }
     }
   }
