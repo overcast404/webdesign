@@ -76,6 +76,7 @@ export default {
             if (resp.data) {
               localStorage.setItem("username", resp.data.username);
               localStorage.setItem("avatar", resp.data.avatar);
+              localStorage.setItem("id",resp.data.id);
               this.$Message.success("登录成功！");
               this.$router.push("/");
             }
