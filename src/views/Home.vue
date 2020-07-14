@@ -12,9 +12,10 @@ import bottom from "../components/nav/bottom";
 export default {
   beforeCreate() {
     console.log("===============");
+    let id=localStorage.getItem("id")
     if (!localStorage.getItem("username")) {
       this.axios
-        .get("http://127.0.0.1:8090/getUserByid", {id:localStorage.getItem("id")})
+        .post("http://127.0.0.1:8090/getUserByid", {"id":id})
         .then(resp => {
           console.log(resp.data);
           localStorage.setItem("username", resp.data.name);
