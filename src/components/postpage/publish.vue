@@ -6,7 +6,7 @@
       <div id="imgupload">
         <div class="demo-upload-list" v-for="item in uploadList">
           <template v-if="item.status === 'finished'">
-            <img :src="'/img/'+item.url" />
+            <img :src="'/img/'+item.response" />
             <div class="demo-upload-list-cover">
               <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
               <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>

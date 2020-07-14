@@ -74,6 +74,7 @@ export default {
         if (valid) {
           this.axios.get("/auth.json", logindata).then(resp => {
             if (resp.data) {
+              console.log(resp.data)
               localStorage.setItem("username", resp.data.username);
               localStorage.setItem("avatar", resp.data.avatar);
               localStorage.setItem("id",resp.data.id);
