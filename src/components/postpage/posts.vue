@@ -66,8 +66,8 @@ export default {
     };
   },
   methods:{
-    like(id){
-      console.log(id)
+    like(a){
+      console.log(a.title)
     }
   }
 };
