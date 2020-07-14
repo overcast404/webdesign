@@ -4,7 +4,7 @@
       <div id="in">
         <img id="avatar" :src="avatar" alt />
         <h2>{{username}}</h2>
-        <h3>{{sign}}</h3>
+        <h5>{{sign}}</h5>
       </div>
       <div id="usertable">
         <table>

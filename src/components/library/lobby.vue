@@ -61,6 +61,7 @@ export default {
       .post("http://127.0.0.1:8090/getbooklist")
       .then(resp => {
         books = resp.data;
+        console.log(books)
       })
       .catch(error => {
         console.log("获取图书列表失败！");
