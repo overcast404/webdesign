@@ -68,7 +68,8 @@ export default {
         console.log(error);
       });
     return {
-      books
+      books,
+      avatar: localStorage.getItem("avatar")
     };
   }
 };
