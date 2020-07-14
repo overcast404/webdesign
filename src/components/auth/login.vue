@@ -72,15 +72,15 @@ export default {
           password: this.formvalidate.pass
         };
         if (valid) {
-          this.axios.post("http://127.0.0.1:8090/login", logindata).then(resp => {
+          this.axios.get("/auth.json", logindata).then(resp => {
             if (resp.data.success) {
               console.log(resp.data)
               localStorage.setItem("id",resp.data.user.id);
               localStorage.setItem("username",resp.data.user.name);
               localStorage.setItem("sign",resp.data.user.sign);
-              localStorage.setItem("avatar","/img/useravatar/"+resp.data.user.avator)
+              localStorage.setItem("avatar","/img/useravatar/"+resp.data.user.avator);
               this.$Message.success("登录成功！");
-              this.$router.push("/post");
+              this.$router.push("/");
             }
           })
           .catch(error=>{
