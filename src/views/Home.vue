@@ -14,7 +14,7 @@ export default {
     console.log("===============");
     if (!localStorage.getItem("username")) {
       this.axios
-        .get("http://127.0.0.1:8090/getUserByid", console.log(localStorage.getItem("id")))
+        .get("http://127.0.0.1:8090/getUserByid", {name:localStorage.getItem("id")})
         .then(resp => {
           console.log(resp.data);
           localStorage.setItem("username", resp.data.name);
