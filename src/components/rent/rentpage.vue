@@ -1,5 +1,23 @@
 <template>
   <div id="rentpage">
+    <div id="rentconfirm" v-if="rentstatus">
+      <h2 style="margin:10px">摆上书架</h2>
+      <center>
+        <img :src="'/img/books/'+thebook.img" alt />
+        <p>书名：{{thebook.name}}</p>
+        <p>作者：{{thebook.author}}</p>
+        <p>出版社：{{thebook.publisher}}</p>
+        <p>出品方：{{thebook.produce}}</p>
+        <p>出版年：{{thebook.datetime}}</p>
+        <p>页数：{{thebook.page}}</p>
+        <p>定价：{{thebook.price}}</p>
+        <p>装帧：{{thebook.zhuangz}}</p>
+        <p>ISBN：{{thebook.isbn}}</p>
+        <h4 style="margin:10px 0 0;color:red">确定要将这本书摆上书架吗？</h4>
+        <Button ghost type="warning" style="margin:30px 40px 0" @click="sharebook">确认</Button>
+        <Button ghost type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
+      </center>
+    </div>
     <div id="leftnav">
       <div id="searchin">
         <h3>检索书籍</h3>
@@ -39,7 +57,7 @@
     </div>
     <div id="rents">
       <div id="torent">
-        <Button ghost>出借</Button>
+        <Button ghost @click="toshare">出借</Button>
         <div id="torentbox"></div>
       </div>
       <div id="rentlist">
@@ -67,12 +85,12 @@ export default {
       searchin: "",
       searchout: [],
       thebook: {},
-      bookshelf: []
+      bookshelf: [],
+      rentstatus: false
     };
   },
   methods: {
     handleSearch(value) {
-      console.log(value);
       this.axios
         .post("http://127.0.0.1:8090/searchbook", { keyword: value })
         .then(resp => {
@@ -83,12 +101,30 @@ export default {
           console.log("检索书籍请求出错！");
           console.log(error);
         });
+    },
+    sharebook() {
+      let id = localStorage.getItem("id");
+      this.axios
+        .post("", { bookname: this.searchin, userid: id })
+        .then(resp => {
+          console.log(resp.data);
+        })
+        .catch(error => {
+          console.log("出借失败！");
+          console.log(error);
+        });
+    },
+    toshare() {
+      this.rentstatus = true;
+    },
+    cancel() {
+      this.rentstatus = false;
     }
   },
   watch: {
     searchin: function() {
       this.axios
-        .post("http://127.0.0.1:8090/searchborrow", {bookname:this.searchin})
+        .post("http://127.0.0.1:8090/searchborrow", { bookname: this.searchin })
         .then(resp => {
           console.log(resp.data);
           this.bookshelf = resp.data;
@@ -139,6 +175,26 @@ export default {
   border: 1px double rgb(255, 133, 51);
 }
 #searchlibrary p {
+  white-space: nowrap;
+  overflow: hidden;
+}
+#rentconfirm {
+  margin: 5px;
+  overflow: hidden;
+  width: 400px;
+  height: 420px;
+  background-color: rgb(252, 233, 147);
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#rentconfirm img {
+  width: 100px;
+  border: 1px double rgb(255, 133, 51);
+}
+#rentconfirm p {
   white-space: nowrap;
   overflow: hidden;
 }
