@@ -4,13 +4,12 @@
       <h3>检索书籍</h3>
       <AutoComplete
         v-model="searchin"
-        :data="searchout"
         @on-search="handleSearch"
         placeholder="我的小阳台四季有花"
         style="width:100%"
         icon="ios-search"
       >
-        <Option v-for="(searchrs,bookindex) in searchout" :value="searchrs" :key="bookindex">{{searchrs.name}}</Option>
+        <Option v-for="searchrs in searchout" :value="searchrs" :key="searchrs">{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
       <div id="searchlibrary">
