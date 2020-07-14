@@ -30,7 +30,7 @@
           <p>页数：{{thebook.page}}</p>
           <p>定价：{{thebook.price}}</p>
           <p>装帧：{{thebook.zhuangz}}</p>
-          <p>ISBN：{{thebook.ISBN}}</p>
+          <p>ISBN：{{thebook.isbn}}</p>
         </template>
         <template v-else>
           <p id="res">无结果</p>
