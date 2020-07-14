@@ -47,8 +47,8 @@
 
 <script>
 export default {
-  data() {
-    let posts={};
+  posts:[],
+  beforeCreate(){
     this.axios
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
@@ -58,8 +58,10 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  data() {
     return {
-      posts,
+      posts:this.posts,
       avatar: localStorage.getItem("avatar")
     };
   }
