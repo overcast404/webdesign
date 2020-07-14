@@ -42,8 +42,9 @@ export default {
   },
   methods: {
     handleSearch(value) {
+      console.log(value)
       this.axios
-        .post("http://127.0.0.1:8090/searchbook", { keyword: value })
+        .post("http://127.0.0.1:8090/searchbook", value)
         .then(resp => {
           console.log(resp.data);
           this.searchout;
