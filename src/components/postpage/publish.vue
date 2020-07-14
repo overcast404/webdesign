@@ -67,6 +67,7 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
+      console.log(this.uploadList)
       this.uploadList.push({name:res.name,url:"/img/"+res.avator,status:file.status})
       console.log(this.uploadList)
     },
