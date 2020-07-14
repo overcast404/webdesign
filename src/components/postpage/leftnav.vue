@@ -46,11 +46,11 @@ export default {
       rentnum:"",
       postnum:""
     }
-    this.axios.get("#").then(resp=>{
+    // this.axios.post("#").then(resp=>{
 
-    }).catch(error=>{
-      console.log(error)
-    })
+    // }).catch(error=>{
+    //   console.log(error)
+    // })
     return {
       avatar:localStorage.getItem("avatar"),
       username:localStorage.getItem("username"),
