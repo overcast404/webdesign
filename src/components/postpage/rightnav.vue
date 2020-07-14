@@ -12,25 +12,15 @@
 <script>
 export default {
   data() {
-    let tenposts
-    this.axios.get("").then(resp=>{
+    let tenposts=[]
+    this.axios.post("http://127.0.0.1:8090/getCardHot").then(resp=>{
       tenposts=resp.data
+      console.log(tenposts)
     }).catch(error=>{
       console.log(error)
     })
     return {
-      tenposts: [
-        { posttitle: "《游戏的终结》" },
-        { posttitle: "《我将成为明月》" },
-        { posttitle: "《将军族》" },
-        { posttitle: "《两京十五日》" },
-        { posttitle: "《地下春天》" },
-        { posttitle: "《地下春天》" },
-        { posttitle: "《地下春天》" },
-        { posttitle: "《地下春天》" },
-        { posttitle: "《地下春天》" },
-        { posttitle: "《地下春天》" },
-      ],
+      tenposts,
       fontsize: [20,19,18,16,16,16,14,14,14,12],
     };
   }

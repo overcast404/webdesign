@@ -31,14 +31,14 @@
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </div>
           <div class="option">
-            <a :title="post.id" @click="like(this)">
-              <img src="../../assets/img/postpage/posts/like.png" alt />
+            <a  @click="like($event)">
+              <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
             </a>
             <a @click="like(post.id)">
-              <img src="../../assets/img/postpage/posts/comment.png" alt />
+              <img src="../../assets/img/postpage/posts/comment.png" :title="post.id" alt />
             </a>
-            <a @click="like(post.id)">
-              <img src="../../assets/img/postpage/posts/collect.png" alt />
+            <a @click="collect(post.id)">
+              <img src="../../assets/img/postpage/posts/collect.png" :title="post.id" alt />
             </a>
           </div>
         </div>
@@ -61,13 +61,15 @@ export default {
         console.log(error);
       });
     return {
-      posts,
+      posts:[{
+        id:"1"
+      }],
       avatar: localStorage.getItem("avatar")
     };
   },
   methods:{
-    like(a){
-      console.log(a.title)
+    like:function(event){
+      console.log(event.target.title)
     }
   }
 };
