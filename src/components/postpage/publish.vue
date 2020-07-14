@@ -78,7 +78,7 @@ export default {
       this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
     },
     handleSuccess(res, file) {
-      this.publishdata.avator.push(res.avator);
+      this.publishdata.avator.push(res);
     },
     handleFormatError(file) {
       this.$Notice.warning({
