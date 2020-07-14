@@ -63,7 +63,7 @@ export default {
     topublish() {
       console.log(this.publishdata);
       this.axios
-        .get("http://127.0.0.1:8090/addCard", this.publishdata)
+        .post("http://127.0.0.1:8090/addCard", this.publishdata)
         .then(resp => {
           console.log(resp.data);
         })

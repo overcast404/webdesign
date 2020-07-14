@@ -105,7 +105,7 @@ export default {
     sharebook() {
       let id = localStorage.getItem("id");
       this.axios
-        .post("http://127.0.0.1:8090/addborrow", { bookname: this.searchin, userid: id })
+        .post("http://127.0.0.1:8090/addborrow", { bookname: this.searchin, useid: id })
         .then(resp => {
           console.log(resp.data);
         })
