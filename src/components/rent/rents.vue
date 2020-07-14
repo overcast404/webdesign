@@ -2,6 +2,7 @@
   <div id="rents">
     <div id="torent">
       <Button ghost>出借</Button>
+      <div id="torentbox"></div>
     </div>
     <div id="rentlist">
       <div class="book">

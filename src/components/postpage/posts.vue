@@ -10,7 +10,6 @@
       <a v-if="avatar" href>
         <img src="../../assets/img/postpage/lover.png" alt />
       </a>
-      
     </div>
     <div class="onepost">
       <div class="head">
@@ -54,14 +53,19 @@
 
 <script>
 export default {
-  data(){
-    let posts
-    this.axios.get("").then(resp=>{
-      
-    })
-    return{
-      avatar:localStorage.getItem("avatar")
-    }
+  data() {
+    let posts;
+    this.axios
+      .post("http://127.0.0.1:8090/getCardList")
+      .then(resp => {
+        console.log(resp.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    return {
+      avatar: localStorage.getItem("avatar")
+    };
   }
 };
 </script>
@@ -86,10 +90,10 @@ export default {
 #classify img {
   width: 40px;
   // float: left;
-  margin:5px;
+  margin: 5px;
 }
-#classify a{
-  margin:0 15px;
+#classify a {
+  margin: 0 15px;
 }
 .onepost {
   margin: 5px 0;
