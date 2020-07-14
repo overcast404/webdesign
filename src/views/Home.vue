@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <topnav></topnav>
-    <router-view/>
+    <router-view />
     <bottom></bottom>
   </div>
 </template>
@@ -10,15 +10,18 @@
 import topnav from "../components/nav/top";
 import bottom from "../components/nav/bottom";
 export default {
-  beforeCreate(){
-    console.log("===============")
-    if(!localStorage.getItem("username"))
-    this.axios.post("http://127.0.0.1:8090/getUserByid",localStorage.getItem("id")).then(resp=>{
-      console.log(resp.data)
-      localStorage.setItem("username",resp.data.name)
-      localStorage.setItem("avatar","/img/"+resp.data.avator)
-      localStorage.setItem("sign","/img/"+resp.data.sign)
-    })
+  beforeCreate() {
+    console.log("===============");
+    if (!localStorage.getItem("username")) {
+      this.axios
+        .get("http://127.0.0.1:8090/getUserByid", console.log(localStorage.getItem("id")))
+        .then(resp => {
+          console.log(resp.data);
+          localStorage.setItem("username", resp.data.name);
+          localStorage.setItem("avatar", "/img/" + resp.data.avator);
+          localStorage.setItem("sign", "/img/" + resp.data.sign);
+        });
+    }
   },
   components: {
     topnav,
@@ -28,6 +31,6 @@ export default {
 </script>
 <style lang="scss">
 #home {
-  background-color:cornsilk;
+  background-color: cornsilk;
 }
 </style>
