@@ -42,6 +42,7 @@
       </div>
     </div>
     <div id="bookrack">
+      {{books}}
       <template v-for="book in books">
         <div class="book">
           <img :src="'/img/books/'+book.img" alt />
