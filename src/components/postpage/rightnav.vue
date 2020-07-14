@@ -18,7 +18,7 @@ export default {
     this.axios
       .post("http://127.0.0.1:8090/getCardHot")
       .then(resp => {
-        tenposts = resp.data;
+        this.tenposts = resp.data;
         console.log(tenposts);
       })
       .catch(error => {
