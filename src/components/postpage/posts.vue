@@ -11,53 +11,55 @@
         <img src="../../assets/img/postpage/lover.png" alt />
       </a>
     </div>
-    <div class="onepost" v-for="(post,index) in posts">
-      <div class="head">
-        <router-link to="#">
-          <img :src="post.img" class="avatar" />
-          <span class="username">{{post.username}}</span>
-        </router-link>
-        <span>{{post.scanum}}</span>
-      </div>
-      <div class="content">
-        <router-link to="#">
-          <div>
-            <h2>{{post.title}}</h2>
+    <template v-for="(post,index) in posts">
+      <div class="onepost">
+        <div class="head">
+          <router-link to="#">
+            <img :src="post.img" class="avatar" />
+            <span class="username">{{post.username}}</span>
+          </router-link>
+          <span>{{post.scanum}}</span>
+        </div>
+        <div class="content">
+          <router-link to="#">
+            <div>
+              <h2>{{post.title}}</h2>
+            </div>
+            <pre>{{post.content}}</pre>
+          </router-link>
+          <div class="postimgs" v-for="(img,index) in post.avatar">
+            <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </div>
-          <pre>{{post.content}}</pre>
-        </router-link>
-        <div class="postimgs" v-for="(img,index) in post.avatar">
-          <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
-        </div>
-        <div class="option">
-          <a href @click="like(post.id)">
-            <img src="../../assets/img/postpage/posts/like.png" alt />
-          </a>
-          <a href @click="like(post.id)">
-            <img src="../../assets/img/postpage/posts/comment.png" alt />
-          </a>
-          <a href @click="like(post.id)">
-            <img src="../../assets/img/postpage/posts/collect.png" alt />
-          </a>
+          <div class="option">
+            <a href @click="like(post.id)">
+              <img src="../../assets/img/postpage/posts/like.png" alt />
+            </a>
+            <a href @click="like(post.id)">
+              <img src="../../assets/img/postpage/posts/comment.png" alt />
+            </a>
+            <a href @click="like(post.id)">
+              <img src="../../assets/img/postpage/posts/collect.png" alt />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    let posts=[]
-    // this.axios
-    //   .get("http://127.0.0.1:8090/getCardList")
-    //   .then(resp => {
-    //     this.posts = resp.data;
-    //     console.log(posts);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    let posts = [];
+    this.axios
+      .get("http://127.0.0.1:8090/getCardList")
+      .then(resp => {
+        this.posts = resp.data;
+        console.log(posts);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     return {
       posts,
       avatar: localStorage.getItem("avatar")
