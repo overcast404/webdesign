@@ -10,25 +10,23 @@
         style="width:100%"
         icon="ios-search"
       >
-        <Option v-for="searchrs in searchout" :key="searchrs.id">{{searchrs.name}}</Option>
+        <Option v-for="(searchrs,index) in searchout" :key="index">{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
-    <template v-for="book in searchout">
       <div id="searchlibrary">
         <center>
-          <img :src="'/img/books/'+book.img" alt />
+          <img :src="'/img/books/'+thebook.img" alt />
         </center>
-        <p>{{book.name}}</p>
-        <p>{{book.author}}</p>
-        <p>{{book.publisher}}</p>
-        <p>{{book.produce}}</p>
-        <p>{{book.datetime}}</p>
-        <p>{{book.page}}</p>
-        <p>{{book.price}}</p>
-        <p>{{book.zhuangz}}</p>
-        <p>{{book.ISBN}}</p>
+        <p>{{thebook.name}}</p>
+        <p>{{thebook.author}}</p>
+        <p>{{thebook.publisher}}</p>
+        <p>{{thebook.produce}}</p>
+        <p>{{thebook.datetime}}</p>
+        <p>{{thebook.page}}</p>
+        <p>{{thebook.price}}</p>
+        <p>{{thebook.zhuangz}}</p>
+        <p>{{thebook.ISBN}}</p>
       </div>
-    </template>
   </div>
 </template>
 
@@ -50,6 +48,7 @@ export default {
           this.searchout=resp.data;
           this.thebook=this.searchout[0];
           console.log(this.searchout);
+          console.log(this.thebook)
         })
         .catch(error => {
           console.log("检索书籍请求出错！");
