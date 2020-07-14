@@ -16,6 +16,7 @@
             <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
           </template>
         </div>
+        
         <Upload
           ref="upload"
           :show-upload-list="false"
@@ -55,7 +56,7 @@ export default {
         title: "",
         content: "",
         userid: localStorage.getItem("id"),
-        img: []
+        avator: []
       }
     };
   },
@@ -63,7 +64,7 @@ export default {
     topublish() {
       console.log(this.publishdata);
       this.axios
-        .post("http://127.0.0.1:8090/addCard", this.publishdata)
+        .get("http://127.0.0.1:8090/addCard", this.publishdata)
         .then(resp => {
           console.log(resp.data);
         })
