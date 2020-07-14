@@ -73,10 +73,8 @@ export default {
         };
         if (valid) {
           this.axios.get("http://127.0.0.1:8090/login", logindata).then(resp => {
-            if (resp.data) {
+            if (resp.data.success) {
               console.log(resp.data)
-              localStorage.setItem("username", resp.data.username);
-              localStorage.setItem("avatar", resp.data.avatar);
               localStorage.setItem("id",resp.data.id);
               this.$Message.success("登录成功！");
               this.$router.push("/");
