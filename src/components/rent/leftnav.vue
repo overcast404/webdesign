@@ -10,7 +10,7 @@
         style="width:100%"
         icon="ios-search"
       >
-        <Option v-for="searchrs in searchout" :key="searchrs">{{searchrs.name}}</Option>
+        <Option v-for="searchrs in searchout" :key="searchrs.id">{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
     <template v-for="book in searchout">
@@ -37,7 +37,8 @@ export default {
   data() {
     return {
       searchin: "",
-      searchout: []
+      searchout: [],
+      thebook:{}
     };
   },
   methods: {
@@ -47,6 +48,7 @@ export default {
         .post("http://127.0.0.1:8090/searchbook",{"keyword":value})
         .then(resp => {
           this.searchout=resp.data;
+          this.thebook=this.searchout[0];
           console.log(this.searchout);
         })
         .catch(error => {
