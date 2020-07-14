@@ -41,12 +41,14 @@
         </p>
       </div>
     </div>
-    <div id="bookrack" v-for="book in books">
+    <div id="bookrack">
+      <template v-for="book in books">
         <div class="book">
-            <img :src="'/img/books/'+book.img" alt="">
-            <h5>{{book.name}}</h5>
-            <h6>{{book.author}}</h6>
+          <img :src="'/img/books/'+book.img" alt />
+          <h5>{{book.name}}</h5>
+          <h6>{{book.author}}</h6>
         </div>
+      </template>
     </div>
   </div>
 </template>
@@ -54,17 +56,20 @@
 <script>
 export default {
   data() {
-    let books=[]
-    this.axios.post("http://127.0.0.1:8090/getbooklist").then(resp=>{
-      books=resp.data
-    }).catch(error=>{
-      console.log("获取图书列表失败！")
-      console.log(error)
-    })
+    let books = [];
+    this.axios
+      .post("http://127.0.0.1:8090/getbooklist")
+      .then(resp => {
+        books = resp.data;
+      })
+      .catch(error => {
+        console.log("获取图书列表失败！");
+        console.log(error);
+      });
     return {
       books
-    }
-  },
+    };
+  }
 };
 </script>
 
@@ -95,16 +100,16 @@ export default {
   font-size: 15px;
   margin: 0 10px;
 }
-.book img{
-    width:100px
+.book img {
+  width: 100px;
 }
-.book{
-    width:170px;
-    text-align: center;
-    border:1px solid white;
-    padding:10px;
-    border-radius: 5px;
-    display:inline-block;
-    margin:5px;
+.book {
+  width: 170px;
+  text-align: center;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 5px;
 }
 </style>
