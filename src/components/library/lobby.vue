@@ -42,7 +42,7 @@
       </div>
     </div>
     <div id="bookrack">
-      <template v-for="book in books">
+      <template v-for="(book,index) in books">
         <div class="book">
           <img :src="'/img/books/'+book.img" alt />
           <h5>{{book.name}}</h5>
@@ -60,7 +60,7 @@ export default {
     this.axios
       .post("http://127.0.0.1:8090/getbooklist")
       .then(resp => {
-        books = resp.data;
+        this.books = resp.data;
         console.log(books)
       })
       .catch(error => {
@@ -68,8 +68,7 @@ export default {
         console.log(error);
       });
     return {
-      books,
-      avatar: localStorage.getItem("avatar")
+      books
     };
   }
 };
@@ -86,7 +85,7 @@ export default {
 }
 #bookrack {
   width: 900px;
-  min-height: 650px;
+  // min-height: 650px;
   background-color: rgb(253, 204, 158);
   border-radius: 5px;
   margin: 5px auto;
