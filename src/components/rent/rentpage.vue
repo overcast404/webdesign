@@ -182,7 +182,7 @@ export default {
   margin: 5px;
   overflow: hidden;
   width: 400px;
-  height: 420px;
+  height: 520px;
   background-color: rgb(252, 233, 147);
   border-radius: 5px;
   position: absolute;
