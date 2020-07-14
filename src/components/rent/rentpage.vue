@@ -88,7 +88,7 @@ export default {
   watch: {
     searchin: function() {
       this.axios
-        .post("http://127.0.0.1:8090/searchborrow", this.searchin)
+        .post("http://127.0.0.1:8090/searchborrow", {bookname:this.searchin})
         .then(resp => {
           console.log(resp.data);
           this.bookshelf = resp.data;
