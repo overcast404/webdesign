@@ -48,7 +48,7 @@
 <script>
 export default {
   data() {
-    let posts;
+    let posts=[];
     this.axios
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
