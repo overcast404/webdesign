@@ -9,7 +9,7 @@
         style="width:100%"
         icon="ios-search"
       >
-        <Option v-for="searchrs in searchout" :value="searchrs" :key="searchrs">{{searchrs.name}}</Option>
+        <Option v-for="searchrs in searchout" :value="searchrs.name" :key="searchrs.id">{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
       <div id="searchlibrary">
