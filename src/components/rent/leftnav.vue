@@ -9,23 +9,32 @@
         style="width:100%"
         icon="ios-search"
       >
-        <Option v-for="searchrs in searchout" :value="searchrs.name" :key="searchrs.id">{{searchrs.name}}</Option>
+        <Option
+          v-for="searchrs in searchout"
+          :value="searchrs.name"
+          :key="searchrs.id"
+        >{{searchrs.name}}</Option>
       </AutoComplete>
     </div>
-      <div id="searchlibrary">
+    <div id="searchlibrary">
+      <template v-if="book">
         <center>
           <img :src="'/img/books/'+thebook.img" alt />
         </center>
-        <p>{{thebook.name}}</p>
-        <p>{{thebook.author}}</p>
-        <p>{{thebook.publisher}}</p>
-        <p>{{thebook.produce}}</p>
-        <p>{{thebook.datetime}}</p>
-        <p>{{thebook.page}}</p>
-        <p>{{thebook.price}}</p>
-        <p>{{thebook.zhuangz}}</p>
-        <p>{{thebook.ISBN}}</p>
-      </div>
+        <p>书名：{{thebook.name}}</p>
+        <p>作者：{{thebook.author}}</p>
+        <p>出版社：{{thebook.publisher}}</p>
+        <p>出品方：{{thebook.produce}}</p>
+        <p>出版年：{{thebook.datetime}}</p>
+        <p>页数：{{thebook.page}}</p>
+        <p>定价：{{thebook.price}}</p>
+        <p>装帧：{{thebook.zhuangz}}</p>
+        <p>ISBN：{{thebook.ISBN}}</p>
+      </template>
+      <template v-else>
+        <p id="res">无结果</p>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -35,19 +44,19 @@ export default {
     return {
       searchin: "",
       searchout: [],
-      thebook:{}
+      thebook: {}
     };
   },
   methods: {
     handleSearch(value) {
-      console.log(value)
+      console.log(value);
       this.axios
-        .post("http://127.0.0.1:8090/searchbook",{"keyword":value})
+        .post("http://127.0.0.1:8090/searchbook", { keyword: value })
         .then(resp => {
-          this.searchout=resp.data;
-          this.thebook=this.searchout[0];
+          this.searchout = resp.data;
+          this.thebook = this.searchout[0];
           console.log(this.searchout);
-          console.log(this.thebook)
+          console.log(this.thebook);
         })
         .catch(error => {
           console.log("检索书籍请求出错！");
@@ -59,6 +68,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#res{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 #leftnav {
   width: 250px;
   background-color: rgb(253, 225, 188);
