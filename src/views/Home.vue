@@ -19,8 +19,8 @@ export default {
         .then(resp => {
           console.log(resp.data);
           localStorage.setItem("username", resp.data.name);
-          localStorage.setItem("avatar", "/img/" + resp.data.avator);
-          localStorage.setItem("sign", "/img/" + resp.data.sign);
+          localStorage.setItem("avatar", "/img/useravatar/" + resp.data.avator);
+          localStorage.setItem("sign", resp.data.sign);
         });
     }
   },
