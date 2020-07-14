@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -79,6 +78,9 @@ export default {
               localStorage.setItem("username",resp.data.user.name);
               localStorage.setItem("sign",resp.data.user.sign);
               localStorage.setItem("avatar","/img/useravatar/"+resp.data.user.avator);
+              localStorage.setItem("rentnum",resp.data.borrownum);
+              localStorage.setItem("collectnum",resp.data.colletnum);
+              localStorage.setItem("postnum",resp.data.cardnum);
               this.$Message.success("登录成功！");
               this.$router.push("/");
             }

@@ -80,7 +80,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    let rentbooks = [];
+    this.axios
+      .post("")
+      .then(resp => {
+        rentbooks = resp.data;
+      })
+      .catch(error => {
+        console.log("获取出借书籍失败");
+        console.log(error);
+      });
+    return {
+      rentbooks
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -98,19 +114,19 @@ export default {};
 .book {
   margin: 10px;
   width: 200px;
-  border:1px solid white;
+  border: 1px solid white;
   border-radius: 5px;
-  display:inline-block
+  display: inline-block;
 }
 .bookimg {
   width: 130px;
-  margin:10px;
+  margin: 10px;
 }
 .avatar {
   width: 40px;
   border-radius: 50%;
   float: left;
-  margin: 5px 10px ; 
+  margin: 5px 10px;
 }
 .user span {
   line-height: 50px;

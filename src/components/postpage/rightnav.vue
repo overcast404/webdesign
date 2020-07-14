@@ -3,7 +3,7 @@
     <div id="hotposts">
       <h3>热门话题：</h3>
       <div v-for="(post,index) in tenposts" class="hotpost">
-        <router-link to="#" class="a" :style="{fontSize:fontsize[index]+'px'}">{{post.posttitle}}</router-link>
+        <router-link to="#" class="a" :style="{fontSize:fontsize[index]+'px'}">{{post}}</router-link>
       </div>
     </div>
   </div>

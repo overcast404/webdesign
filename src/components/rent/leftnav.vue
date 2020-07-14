@@ -2,7 +2,16 @@
   <div id="leftnav">
     <div id="searchin">
       <h3>检索书籍</h3>
-      <Input search placeholder="我的小阳台四季有花"></Input>
+      <AutoComplete
+        v-model="searchin"
+        :data="searchout"
+        @on-search="handleSearch"
+        placeholder="我的小阳台四季有花"
+        style="width:100%"
+        icon="ios-search">
+        <a v-for="searchrs in searchout" :value="searchre" ></a>
+        </AutoComplete>
+        
     </div>
     <div id="searchlibrary">
       <center>
@@ -22,7 +31,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    
+    return {
+      searchin:"",
+      searchout: []
+    }
+  },
+  methods:{
+    handleSearch(value){
+      this.axios.post("",value).then(resp=>{
+        console.log(resp.data)
+      }).catch(error=>{
+        console.log("检索书籍请求出错！")
+        console.log(error)
+      })
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

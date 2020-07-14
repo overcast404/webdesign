@@ -4,6 +4,7 @@
       <div id="in">
         <img id="avatar" :src="avatar" alt />
         <h2>{{username}}</h2>
+        <h3>{{sign}}</h3>
       </div>
       <div id="usertable">
         <table>
@@ -19,15 +20,15 @@
             <td>帖子</td>
           </tr>
           <tr>
-            <td>{{userdata.collectnum}}</td>
+            <td>{{ollectnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>{{userdata.rentnum}}</td>
+            <td>{{rentnum}}</td>
             <td>
               <Divider type="vertical" />
             </td>
-            <td>{{userdata.postnum}}</td>
+            <td>{{postnum}}</td>
           </tr>
         </table>
       </div>
@@ -41,16 +42,13 @@
 <script>
 export default {
   data() {
-    let userdata={
-      collectnum:"",
-      rentnum:"",
-      postnum:"",
-      sign:"",
-    }
     return {
       avatar:localStorage.getItem("avatar"),
       username:localStorage.getItem("username"),
-      userdata
+      sign:localStorage.getItem("sign"),
+      collectnum:localStorage.getItem("collectnum"),
+      rentnum:localStorage.getItem("rentnum"),
+      postnum:localStorage.getItem("postnum")
     };
   }
 };

@@ -41,63 +41,31 @@
         </p>
       </div>
     </div>
-    <div id="bookrack">
+    <div id="bookrack" v-for="book in books">
         <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
-        </div>
-        <div class="book">
-            <img src="../../assets/img/library/book.jpg" alt="">
-            <h5>《我的小阳台四季有花》</h5>
-            <h6>王清欢</h6>
+            <img :src="'/img/books/'+book.img" alt="">
+            <h5>{{book.name}}</h5>
+            <h6>{{book.author}}</h6>
         </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    let books=[]
+    this.axios.post("http://127.0.0.1:8090/getbooklist").then(resp=>{
+      books=resp.data
+    }).catch(error=>{
+      console.log("获取图书列表失败！")
+      console.log(error)
+    })
+    return {
+      books
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
