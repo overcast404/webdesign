@@ -56,7 +56,7 @@ export default {
   data() {
     let posts;
     this.axios
-      .post("http://127.0.0.1:8090/getCardList")
+      .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
         console.log(resp.data);
       })
