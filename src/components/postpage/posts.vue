@@ -48,12 +48,12 @@
 <script>
 export default {
   data() {
-    let posts=[];
+    let posts={};
     this.axios
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
-        posts = resp.data;
-        console.log(resp.data);
+        this.posts = resp.data;
+        console.log(posts);
       })
       .catch(error => {
         console.log(error);
