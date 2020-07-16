@@ -61,16 +61,18 @@
         <div id="torentbox"></div>
       </div>
       <div id="rentlist">
-        <template v-for="thisbook in bookshelf">
+        <template v-for="(thisbook,index) in bookshelf">
           <div class="book">
-            <center>
-              <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
-              <h3>{{thisbook.name}}</h3>
-            </center>
-            <div class="user">
-              <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-              <span>{{thisbook.username}}</span>
-            </div>
+            <a @click="want(index)">
+              <center>
+                <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
+                <h3>{{thisbook.name}}</h3>
+              </center>
+              <div class="user">
+                <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
+                <span>{{thisbook.username}}</span>
+              </div>
+            </a>
           </div>
         </template>
       </div>
@@ -124,6 +126,9 @@ export default {
     },
     cancel() {
       this.rentstatus = false;
+    },
+    want(index){
+      console.log(index);
     }
   },
   watch: {
@@ -219,6 +224,7 @@ export default {
   border: 1px solid white;
   border-radius: 5px;
   display: inline-block;
+  color:#515a6e;
 }
 .bookimg {
   width: 130px;
