@@ -142,8 +142,9 @@ export default {
         bookname:this.bookshelf[this.whichwant].bookname
       }
       console.log(wantdata);
-      this.axios.post("http://127.0.0.1:8090/makerecord").then(resp=>{
-        this.searchin=this.searchin
+      this.axios.post("http://127.0.0.1:8090/makerecord",wantdata).then(resp=>{
+        this.searchin=this.searchin;
+        this.wanted=false
       })
     },
     want(index){
