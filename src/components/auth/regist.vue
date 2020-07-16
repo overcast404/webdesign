@@ -102,7 +102,7 @@ export default {
         if (valid) {
           this.$Message.success("发送！");
           this.axios
-            .post("http://127.0.0.1:8080/User/login", registdata)
+            .post("http://127.0.0.1:8080/User/addUser", registdata)
             .then(resp => {
               if (resp.data.success) {
               localStorage.setItem("id",resp.data.user.id);
