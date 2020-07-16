@@ -32,7 +32,7 @@
           </template>
           <div class="option">
             <a @click="like(index)">
-              <Badge :count="post.upname">
+              <Badge :count="post.upname" color="volcano">
                 <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
               </Badge>
             </a>
@@ -42,7 +42,7 @@
             </a>
 
             <a @click="collect(index)">
-              <Badge :count="post.likename">
+              <Badge :count="post.likename" color="volcano">
                 <img src="../../assets/img/postpage/posts/collect.png" :title="post.id" alt />
               </Badge>
             </a>
