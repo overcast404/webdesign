@@ -69,7 +69,7 @@
             </center>
             <div class="user">
               <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-              <span>{{username}}</span>
+              <span>{{thisbook.username}}</span>
             </div>
           </div>
         </template>

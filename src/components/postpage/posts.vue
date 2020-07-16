@@ -18,7 +18,7 @@
             <img :src="'/img/useravatar/'+post.img" class="avatar" />
             <span class="username">{{post.username}}</span>
           </router-link>
-          <span style="float:right">{{post.scanum}}</span>
+          <span style="float:right">浏览次数：{{post.scanum}}</span>
         </div>
         <div class="content">
           <router-link to="#">
@@ -31,14 +31,20 @@
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </template>
           <div class="option">
-            <a  @click="like($event)">
-              <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
+            <a @click="like(index)">
+              <Badge :count="post.upname">
+                <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
+              </Badge>
             </a>
+
             <a @click="like(post.id)">
               <img src="../../assets/img/postpage/posts/comment.png" :title="post.id" alt />
             </a>
-            <a @click="collect(post.id)">
-              <img src="../../assets/img/postpage/posts/collect.png" :title="post.id" alt />
+
+            <a @click="collect(index)">
+              <Badge :count="post.likename">
+                <img src="../../assets/img/postpage/posts/collect.png" :title="post.id" alt />
+              </Badge>
             </a>
           </div>
         </div>
@@ -55,19 +61,24 @@ export default {
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
         this.posts = resp.data;
-        console.log(resp.data)
+        console.log(resp.data);
       })
       .catch(error => {
         console.log(error);
       });
     return {
       posts,
-      avatar: localStorage.getItem("avatar")
+      avatar: localStorage.getItem("avatar"),
+      likes: true,
+      collects: true
     };
   },
-  methods:{
-    like:function(event){
-      console.log(event.target.title)
+  methods: {
+    like(index) {
+      this.posts[index].upname=Number(this.posts[index].upname) + 1;
+    },
+    collect(index) {
+      this.posts[index].likename=Number(this.posts[index].likename) + 1;
     }
   }
 };
