@@ -76,6 +76,11 @@
           </div>
         </template>
       </div>
+      <div id="iswant" v-if="wanted">
+        <h4 style="margin:10px 0 0;color:red">要借这本书吗？</h4>
+        <Button ghost type="warning" style="margin:30px 40px 0" @click="wantbook">确认</Button>
+        <Button ghost type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
+      </div>
     </div>
   </div>
 </template>
@@ -88,7 +93,9 @@ export default {
       searchout: [],
       thebook: {},
       bookshelf: [],
-      rentstatus: false
+      rentstatus: false,
+      wanted:false,
+      whichwant:""
     };
   },
   methods: {
@@ -126,11 +133,22 @@ export default {
     },
     cancel() {
       this.rentstatus = false;
+      this.wanted = false;
+    },
+    wantbook(){
+      let wantdata={
+        id:localStorage.getItem("id"),
+        borrowuserid:this.bookshelf[this.whichwant].id,
+        bookname:this.bookshelf[this.whichwant].bookname
+      }
+      console.log(wantdata);
+      this.axios.post("http://127.0.0.1:8090/makerecord").then(resp=>{
+        this.searchin=this.searchin
+      })
     },
     want(index){
-      console.log(index);
-      let wantdata=bookshelf[index]
-      console.log(wantdata);
+      this.whichwant=index;
+      this.wanted=true
     }
   },
   watch: {
@@ -192,6 +210,7 @@ export default {
 }
 #rentconfirm {
   margin: 5px;
+  background-color: rgb(255, 172, 95);
   overflow: hidden;
   width: 400px;
   height: 520px;
@@ -226,6 +245,9 @@ export default {
   border: 1px solid white;
   border-radius: 5px;
   display: inline-block;
+  
+}
+a{
   color:#515a6e;
 }
 .bookimg {
@@ -241,5 +263,17 @@ export default {
 .user span {
   line-height: 50px;
   margin: 10px;
+}
+#iswant{
+  margin: 5px;
+  overflow: hidden;
+  background-color: rgb(255, 172, 95);
+  width: 400px;
+  height: 300px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
