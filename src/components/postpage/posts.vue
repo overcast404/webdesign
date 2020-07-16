@@ -32,9 +32,7 @@
           </template>
           <div class="option">
             <a @click="like(index)">
-              <Badge :count="post.upname" color="volcano">
                 <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
-              </Badge>
             </a>
 
             <a @click="like(post.id)">
@@ -42,9 +40,7 @@
             </a>
 
             <a @click="collect(index)">
-              <Badge :count="post.likename" color="volcano">
                 <img src="../../assets/img/postpage/posts/collect.png" :title="post.id" alt />
-              </Badge>
             </a>
           </div>
         </div>
@@ -74,12 +70,7 @@ export default {
     };
   },
   methods: {
-    like(index) {
-      this.posts[index].upname=Number(this.posts[index].upname) + 1;
-    },
-    collect(index) {
-      this.posts[index].likename=Number(this.posts[index].likename) + 1;
-    }
+
   }
 };
 </script>
