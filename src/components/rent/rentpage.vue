@@ -121,7 +121,9 @@ export default {
         .then(resp => {
           console.log(resp.data);
           this.rentstatus = false;
+          this.searchin=this.searchin;
           this.$Message.success("已放上书架！");
+
         })
         .catch(error => {
           console.log("出借失败！");
@@ -138,7 +140,7 @@ export default {
     wantbook(){
       let wantdata={
         id:localStorage.getItem("id"),
-        borrowuserid:this.bookshelf[this.whichwant].id,
+        useid:this.bookshelf[this.whichwant].id,
         bookname:this.bookshelf[this.whichwant].bookname
       }
       console.log(wantdata);

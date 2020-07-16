@@ -1,7 +1,19 @@
 <template>
   <div id="lobby">
     <div id="lobbysearch">
-      <Input search placeholder="我的小阳台四季有花" />
+      <AutoComplete
+          v-model="searchin"
+          @on-search="handleSearch"
+          placeholder="我的小阳台四季有花"
+          style="width:100%"
+          icon="ios-search"
+        >
+          <Option
+            v-for="searchrs in searchout"
+            :value="searchrs.name"
+            :key="searchrs.id"
+          >{{searchrs.name}}</Option>
+        </AutoComplete>
       <div id="ladder">
         <p>
           <a class="big">文学:</a>
