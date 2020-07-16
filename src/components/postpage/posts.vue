@@ -27,7 +27,7 @@
             </div>
             <pre>{{post.content}}</pre>
           </router-link>
-          <div class="postimgs" v-for="(img,index) in post.avatar">
+          <div class="postimgs" v-for="(img,imgdex) in post[index].avatar">
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
           </div>
           <div class="option">
