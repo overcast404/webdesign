@@ -27,9 +27,9 @@
             </div>
             <pre>{{post.content}}</pre>
           </router-link>
-          <div class="postimgs" v-for="(img,imgdex) in posts[index].avator">
+          <template class="postimgs" v-for="(img,imgdex) in posts[index].avator">
             <img class="postimg" :src="'/img/postimg/'+img" alt="这里是图片" />
-          </div>
+          </template>
           <div class="option">
             <a  @click="like($event)">
               <img src="../../assets/img/postpage/posts/like.png" :title="post.id" alt />
