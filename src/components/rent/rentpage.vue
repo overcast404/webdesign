@@ -120,7 +120,7 @@ export default {
         })
         .then(resp => {
           console.log(resp.data);
-          this.rentstatus = true;
+          this.rentstatus = false;
           this.$Message.success("已放上书架！");
         })
         .catch(error => {
