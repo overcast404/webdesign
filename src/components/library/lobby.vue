@@ -83,7 +83,8 @@ export default {
       books,
       searchin: "",
       searchout: [],
-      thebook: {}
+      thebook: {},
+      
     };
   },
   methods: {
@@ -91,8 +92,7 @@ export default {
       this.axios
         .post("http://127.0.0.1:8090/searchbook", { keyword: value })
         .then(resp => {
-          this.searchout = resp.data;
-          this.thebook = this.searchout[0];
+          this.books = resp.data;
         })
         .catch(error => {
           console.log("检索书籍请求出错！");
@@ -103,10 +103,10 @@ export default {
    watch: {
     searchin: function() {
       this.axios
-        .post("http://127.0.0.1:8090/searchborrow", { bookname: this.searchin })
+        .post("http://127.0.0.1:8090/searchbook", { bookname: this.searchin })
         .then(resp => {
           console.log(resp.data);
-          this.bookshelf = resp.data;
+          this.books = resp.data;
         })
         .catch(error => {
           console.log("出错了！！！！");

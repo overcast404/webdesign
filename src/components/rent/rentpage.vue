@@ -14,8 +14,8 @@
         <p>装帧：{{thebook.zhuangz}}</p>
         <p>ISBN：{{thebook.isbn}}</p>
         <h4 style="margin:10px 0 0;color:red">确定要将这本书摆上书架吗？</h4>
-        <Button ghost type="warning" style="margin:30px 40px 0" @click="sharebook">确认</Button>
-        <Button ghost type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
+        <Button type="warning" style="margin:30px 40px 0" @click="sharebook">确认</Button>
+        <Button type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
       </center>
     </div>
     <div id="leftnav">
@@ -77,9 +77,11 @@
         </template>
       </div>
       <div id="iswant" v-if="wanted">
-        <h4 style="margin:10px 0 0;color:red">要借这本书吗？</h4>
-        <Button ghost type="warning" style="margin:30px 40px 0" @click="wantbook">确认</Button>
-        <Button ghost type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
+        <center>
+          <h4 style="margin:10px 0 0;color:red">要借这本书吗？</h4>
+          <Button type="warning" style="margin:30px 40px 0" @click="wantbook">确认</Button>
+          <Button type="warning" @click="cancel" style="margin:30px 40px 0">取消</Button>
+        </center>
       </div>
     </div>
   </div>
@@ -94,8 +96,8 @@ export default {
       thebook: {},
       bookshelf: [],
       rentstatus: false,
-      wanted:false,
-      whichwant:""
+      wanted: false,
+      whichwant: ""
     };
   },
   methods: {
@@ -121,9 +123,8 @@ export default {
         .then(resp => {
           console.log(resp.data);
           this.rentstatus = false;
-          this.searchin=this.searchin;
+          this.searchin = this.searchin;
           this.$Message.success("已放上书架！");
-
         })
         .catch(error => {
           console.log("出借失败！");
@@ -137,21 +138,23 @@ export default {
       this.rentstatus = false;
       this.wanted = false;
     },
-    wantbook(){
-      let wantdata={
-        useid:localStorage.getItem("id"),
-        borrowuserid:this.bookshelf[this.whichwant].id,
-        bookname:this.bookshelf[this.whichwant].bookname
-      }
+    wantbook() {
+      let wantdata = {
+        useid: localStorage.getItem("id"),
+        borrowuserid: this.bookshelf[this.whichwant].id,
+        bookname: this.bookshelf[this.whichwant].bookname
+      };
       console.log(wantdata);
-      this.axios.post("http://127.0.0.1:8090/makerecord",wantdata).then(resp=>{
-        this.searchin=this.searchin;
-        this.wanted=false
-      })
+      this.axios
+        .post("http://127.0.0.1:8090/makerecord", wantdata)
+        .then(resp => {
+          this.searchin = this.searchin;
+          this.wanted = false;
+        });
     },
-    want(index){
-      this.whichwant=index;
-      this.wanted=true
+    want(index) {
+      this.whichwant = index;
+      this.wanted = true;
     }
   },
   watch: {
@@ -248,10 +251,9 @@ export default {
   border: 1px solid white;
   border-radius: 5px;
   display: inline-block;
-  
 }
-a{
-  color:#515a6e;
+a {
+  color: #515a6e;
 }
 .bookimg {
   width: 130px;
@@ -267,7 +269,7 @@ a{
   line-height: 50px;
   margin: 10px;
 }
-#iswant{
+#iswant {
   margin: 5px;
   overflow: hidden;
   background-color: rgb(255, 172, 95);
