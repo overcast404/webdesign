@@ -18,7 +18,7 @@
             <img :src="'/img/useravatar/'+post.img" class="avatar" />
             <span class="username">{{post.username}}</span>
           </router-link>
-          <span>{{post.scanum}}</span>
+          <span style="float:right">{{post.scanum}}</span>
         </div>
         <div class="content">
           <router-link to="#">

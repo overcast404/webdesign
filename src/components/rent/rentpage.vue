@@ -1,6 +1,6 @@
 <template>
   <div id="rentpage">
-    <div id="rentconfirm" v-if="rentstatus">
+    <div id="rentconfirm" v-if="rentstatus" :style="{backgroundImg:'/img/books/'+thebook.img}">
       <h2 style="margin:10px">摆上书架</h2>
       <center>
         <img :src="'/img/books/'+thebook.img" alt />
@@ -69,7 +69,7 @@
             </center>
             <div class="user">
               <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
-              <span>用户名</span>
+              <span>{{username}}</span>
             </div>
           </div>
         </template>
@@ -105,9 +105,14 @@ export default {
     sharebook() {
       let id = localStorage.getItem("id");
       this.axios
-        .post("http://127.0.0.1:8090/addborrow", { bookname: this.searchin, useid: id })
+        .post("http://127.0.0.1:8090/addborrow", {
+          bookname: this.searchin,
+          useid: id
+        })
         .then(resp => {
           console.log(resp.data);
+          this.rentstatus = true;
+          this.$Message.success("已放上书架！");
         })
         .catch(error => {
           console.log("出借失败！");
@@ -183,7 +188,6 @@ export default {
   overflow: hidden;
   width: 400px;
   height: 520px;
-  background-color: rgb(252, 233, 147);
   border-radius: 5px;
   position: absolute;
   top: 50%;
