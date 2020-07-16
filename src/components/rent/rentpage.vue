@@ -66,7 +66,7 @@
             <a @click="want(index)">
               <center>
                 <img class="bookimg" :src="'/img/books/'+thisbook.img" alt />
-                <h3>{{thisbook.name}}</h3>
+                <h3>{{thisbook.bookname}}</h3>
               </center>
               <div class="user">
                 <img class="avatar" src="../../assets/img/useravatar/useravatar.png" alt />
@@ -129,6 +129,8 @@ export default {
     },
     want(index){
       console.log(index);
+      let wantdata=bookshelf[index]
+      console.log(wantdata);
     }
   },
   watch: {
