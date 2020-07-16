@@ -66,6 +66,8 @@ export default {
         .post("http://127.0.0.1:8090/addCard", this.publishdata)
         .then(resp => {
           console.log(resp.data);
+          this.$Message.success("发送成功！");
+          publishdata={};
         })
         .catch(error => {});
     },
