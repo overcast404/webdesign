@@ -2,18 +2,18 @@
   <div id="lobby">
     <div id="lobbysearch">
       <AutoComplete
-          v-model="searchin"
-          @on-search="handleSearch"
-          placeholder="我的小阳台四季有花"
-          style="width:100%"
-          icon="ios-search"
-        >
-          <Option
-            v-for="searchrs in searchout"
-            :value="searchrs.name"
-            :key="searchrs.id"
-          >{{searchrs.name}}</Option>
-        </AutoComplete>
+        v-model="searchin"
+        @on-search="handleSearch"
+        placeholder="我的小阳台四季有花"
+        style="width:100%"
+        icon="ios-search"
+      >
+        <Option
+          v-for="searchrs in searchout"
+          :value="searchrs.name"
+          :key="searchrs.id"
+        >{{searchrs.name}}</Option>
+      </AutoComplete>
       <div id="ladder">
         <p>
           <a class="big">文学:</a>
@@ -73,15 +73,45 @@ export default {
       .post("http://127.0.0.1:8090/getbooklist")
       .then(resp => {
         this.books = resp.data;
-        console.log(books)
+        console.log(books);
       })
       .catch(error => {
         console.log("获取图书列表失败！");
         console.log(error);
       });
     return {
-      books
+      books,
+      searchin: "",
+      searchout: [],
+      thebook: {}
     };
+  },
+  methods: {
+    handleSearch(value) {
+      this.axios
+        .post("http://127.0.0.1:8090/searchbook", { keyword: value })
+        .then(resp => {
+          this.searchout = resp.data;
+          this.thebook = this.searchout[0];
+        })
+        .catch(error => {
+          console.log("检索书籍请求出错！");
+          console.log(error);
+        });
+    }
+  },
+   watch: {
+    searchin: function() {
+      this.axios
+        .post("http://127.0.0.1:8090/searchborrow", { bookname: this.searchin })
+        .then(resp => {
+          console.log(resp.data);
+          this.bookshelf = resp.data;
+        })
+        .catch(error => {
+          console.log("出错了！！！！");
+        });
+    }
   }
 };
 </script>

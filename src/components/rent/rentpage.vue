@@ -139,8 +139,8 @@ export default {
     },
     wantbook(){
       let wantdata={
-        id:localStorage.getItem("id"),
-        useid:this.bookshelf[this.whichwant].id,
+        useid:localStorage.getItem("id"),
+        borrowuserid:this.bookshelf[this.whichwant].id,
         bookname:this.bookshelf[this.whichwant].bookname
       }
       console.log(wantdata);
