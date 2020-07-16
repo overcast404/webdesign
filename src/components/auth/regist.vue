@@ -95,18 +95,29 @@ export default {
   methods: {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
+        let registdata={
+          name:this.formvalidate.name,
+          password:this.formvalidate.pass
+        }
         if (valid) {
           this.$Message.success("发送！");
           this.axios
-            .post("http://127.0.0.1:8080/User/login", name)
+            .post("http://127.0.0.1:8080/User/login", registdata)
             .then(resp => {
-              if (resp.data.Msg) {
-                console.log(resp.data.Msg);
-                this.$Message.success("登录成功！");
+              if (resp.data.success) {
+              localStorage.setItem("id",resp.data.user.id);
+              localStorage.setItem("username",resp.data.user.name);
+              localStorage.setItem("sign",resp.data.user.sign);
+              localStorage.setItem("avatar","/img/useravatar/"+resp.data.user.avator);
+              localStorage.setItem("rentnum",resp.data.borrownum);
+              localStorage.setItem("collectnum",resp.data.colletnum);
+              localStorage.setItem("postnum",resp.data.cardnum);
+              this.$Message.success("登录成功！");
+              this.$router.push("/");
               }
             });
         } else {
-          this.$Message.error("Fail!");
+          this.$Message.error("注册信息不规范!");
         }
       });
     }

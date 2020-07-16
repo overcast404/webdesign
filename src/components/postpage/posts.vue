@@ -55,6 +55,7 @@ export default {
       .get("http://127.0.0.1:8090/getCardList")
       .then(resp => {
         this.posts = resp.data;
+        console.log(resp.data)
       })
       .catch(error => {
         console.log(error);
