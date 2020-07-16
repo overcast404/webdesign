@@ -274,7 +274,7 @@ a {
   overflow: hidden;
   background-color: rgb(255, 172, 95);
   width: 400px;
-  height: 300px;
+  height: 150px;
   border-radius: 5px;
   position: absolute;
   top: 50%;
