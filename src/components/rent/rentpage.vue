@@ -123,7 +123,10 @@ export default {
         .then(resp => {
           console.log(resp.data);
           this.rentstatus = false;
-          this.searchin = this.searchin;
+          let middle="";
+          middle = this.searchin;
+          this.searchin="";
+          this.searchin=middle;
           this.$Message.success("已放上书架！");
         })
         .catch(error => {
@@ -148,7 +151,11 @@ export default {
       this.axios
         .post("http://127.0.0.1:8090/makerecord", wantdata)
         .then(resp => {
-          this.searchin = this.searchin;
+          let middle="";
+          middle = this.searchin;
+          this.searchin="";
+          this.searchin=middle;
+          this.$Message.success("借书成功！");
           this.wanted = false;
         });
     },
