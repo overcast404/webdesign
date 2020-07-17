@@ -67,6 +67,7 @@ export default {
         .then(resp => {
           console.log(resp.data);
           this.$Message.success("发送成功！");
+          this.$router.push("/");
           publishdata={};
         })
         .catch(error => {});
